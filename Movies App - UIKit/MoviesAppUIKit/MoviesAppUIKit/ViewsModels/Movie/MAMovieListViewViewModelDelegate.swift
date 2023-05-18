@@ -26,7 +26,7 @@ final class MAMovieListViewViewModel: NSObject {
             for movie in movies {
                 let viewModel = MAMovieCollectionViewCellViewModel(
                     movieTitle: movie.title,
-                    movieImageUrl: URL(string: movie.posterPath)
+                    movieImageUrl: URL(string: Constants.baseImageUrl + movie.posterPath)
                 )
                 if !cellViewModels.contains(viewModel) {
                     cellViewModels.append(viewModel)
@@ -40,8 +40,8 @@ final class MAMovieListViewViewModel: NSObject {
     private var apiPage = 0
     private var apiTotalPages = 0
     
-    /// Fetch initial set of characters (20)
-    public func fetchCharacters() {
+    /// Fetch initial set of movies (20)
+    public func fetchMovies() {
         MAService.shared.execute(
             .listMoviesRequests,
             expecting: MAGetMoviesResponse.self

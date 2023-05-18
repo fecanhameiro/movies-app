@@ -10,7 +10,6 @@ import Foundation
 
 struct MAMovie: Codable {
     let adult: Bool
-    let backdropPath: String
     let genreIds: [Int]
     let id: Int
     let originalLanguage: String
@@ -25,9 +24,8 @@ struct MAMovie: Codable {
     let voteCount: Int
     
     enum CodingKeys: String, CodingKey {
-        case adult, id, overview, popularity, title, video
-        case backdropPath = "backdrop_path"
-        case genreIds = "genre_ids"
+       case adult, id, overview, popularity, title, video
+       case genreIds = "genre_ids"
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
         case posterPath = "poster_path"

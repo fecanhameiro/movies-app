@@ -14,7 +14,7 @@ protocol MAMovieListViewDelegate: AnyObject {
     )
 }
 
-/// View that handles showing list of characters, loader, etc.
+/// View that handles showing list of movies, loader, etc.
 final class MAMovieListView: UIView {
     
     public weak var delegate: MAMovieListViewDelegate?
@@ -53,7 +53,7 @@ final class MAMovieListView: UIView {
         addConstraints()
         spinner.startAnimating()
         viewModel.delegate = self
-        viewModel.fetchCharacters()
+        viewModel.fetchMovies()
         setUpCollectionView()
     }
     

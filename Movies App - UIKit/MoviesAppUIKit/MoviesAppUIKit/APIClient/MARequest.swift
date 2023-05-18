@@ -36,8 +36,10 @@ final class MARequest {
             })
         }
         
+        string += "?api_key=\(Constants.apiKey)"
+        
         if !queryParameters.isEmpty {
-            string += "?"
+            string += "&"
             let argumentString = queryParameters.compactMap({
                 guard let value = $0.value else { return nil }
                 return "\($0.name)=\(value)"
@@ -48,6 +50,7 @@ final class MARequest {
         
         return string
     }
+
     
     /// Computed & constructed API url
     public var url: URL? {
@@ -130,5 +133,12 @@ final class MARequest {
 // MARK: - Request convenience
 
 extension MARequest {
-    static let listMoviesRequests = MARequest(endpoint: .movie)
+    
+    
+    static let listMoviesRequests = MARequest(endpoint: .movieSearch, queryParameters: [
+        URLQueryItem(name: "query", value: "avatar"),
+        URLQueryItem(name: "include_adult", value: "false"),
+        URLQueryItem(name: "language", value: "en-US"),
+        URLQueryItem(name: "page", value: "1")
+    ])
 }

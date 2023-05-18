@@ -42,8 +42,8 @@ class MAMovieViewController: UIViewController, MAMovieListViewDelegate {
     // MARK: - MAMovieListViewDelegate
     
     func maMovieListView(_ movieListView: MAMovieListView, didSelectMovie movie: MAMovie) {
-        // Open detail controller for that character
-       // let viewModel = MAMovieDetailViewViewModel(character: character)
+        // Open detail controller for that movie
+       // let viewModel = MAMovieDetailViewViewModel(movie: movie)
 //        let detailVC = MAMovieDetailViewController(viewModel: viewModel)
         let detailVC = MAMovieDetailViewController()
         detailVC.navigationItem.largeTitleDisplayMode = .never

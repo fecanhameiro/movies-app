@@ -47,27 +47,40 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
     
     private func setUpLayer() {
         contentView.layer.cornerRadius = 8
+        contentView.layer.masksToBounds = true
         contentView.layer.shadowColor = UIColor.label.cgColor
-        contentView.layer.cornerRadius = 4
         contentView.layer.shadowOffset = CGSize(width: -4, height: 4)
         contentView.layer.shadowOpacity = 0.3
+        
+        // Glassmorphism effect
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = contentView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.layer.cornerRadius = 8
+        blurEffectView.layer.masksToBounds = true
+        contentView.backgroundColor = UIColor.clear
+        contentView.insertSubview(blurEffectView, at: 0)
+        
     }
+
+
+
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.heightAnchor.constraint(equalToConstant: 30),
             
-
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.leftAnchor.constraint(equalTo: leftAnchor),
+            imageView.rightAnchor.constraint(equalTo: rightAnchor),
+            
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 30),
             titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 7),
             titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -7),
-            
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.topAnchor),
-            
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -3),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
