@@ -13,4 +13,6 @@ import Foundation
     case movieSearch = "SearchMovie"
     /// Endpoint to get movie rating
     case movieRating = "Ratings"
+    /// Endpoint to get movie detail
+    case movieDetails = "Title"
 }

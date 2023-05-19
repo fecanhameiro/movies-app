@@ -15,7 +15,6 @@ struct MAMovie: Codable {
     let image: String
     let title: String
     let description: String
-    
 
 }
 

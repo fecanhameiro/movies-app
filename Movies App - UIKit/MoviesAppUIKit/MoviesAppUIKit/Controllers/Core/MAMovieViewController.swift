@@ -43,9 +43,8 @@ class MAMovieViewController: UIViewController, MAMovieListViewDelegate {
     
     func maMovieListView(_ movieListView: MAMovieListView, didSelectMovie movie: MAMovie) {
         // Open detail controller for that movie
-       // let viewModel = MAMovieDetailViewViewModel(movie: movie)
-//        let detailVC = MAMovieDetailViewController(viewModel: viewModel)
-        let detailVC = MAMovieDetailViewController()
+        let viewModel = MAMovieDetailViewViewModel(movieId: movie.id, movieTitle: movie.title)
+        let detailVC = MAMovieDetailViewController(viewModel: viewModel)
         detailVC.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(detailVC, animated: true)
     }

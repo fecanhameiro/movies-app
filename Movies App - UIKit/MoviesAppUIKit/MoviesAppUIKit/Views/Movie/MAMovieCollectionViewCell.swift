@@ -130,26 +130,26 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
             }
         }
         
-        viewModel.fetchRating{ [weak self] result in
-            switch result {
-                case .success(let data):
-                    
-                    DispatchQueue.main.async {
-                        let ratingText = "IMDB:"
-                        
-                        if let imdb = data.imDb, data.imDb != ""
-                        {
-                            self?.ratingLabel.text = "\(ratingText) \(imdb)"
-                        }
-                        else
-                        {
-                            self?.ratingLabel.text = "\(ratingText) -"
-                        }
-                    }
-                case .failure(let error):
-                    print(String(describing: error))
-                    break
-            }
-        }
+//        viewModel.fetchRating{ [weak self] result in
+//            switch result {
+//                case .success(let data):
+//
+//                    DispatchQueue.main.async {
+//                        let ratingText = "IMDB:"
+//
+//                        if let imdb = data.imDb, data.imDb != ""
+//                        {
+//                            self?.ratingLabel.text = "\(ratingText) \(imdb)"
+//                        }
+//                        else
+//                        {
+//                            self?.ratingLabel.text = "\(ratingText) -"
+//                        }
+//                    }
+//                case .failure(let error):
+//                    print(String(describing: error))
+//                    break
+//            }
+//        }
     }
 }

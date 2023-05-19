@@ -9,7 +9,6 @@ import Foundation
 
 struct MAGetRatingResponse: Codable {
     let rating: MARating
-
     let errorMessage: String
     
     enum CodingKeys: String, CodingKey {

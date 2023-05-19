@@ -95,11 +95,5 @@ extension MAMovieListView: MAMovieListViewViewModelDelegate {
         }
     }
     
-    func didLoadMoreMovies(with newIndexPaths: [IndexPath]) {
-        
-        collectionView.performBatchUpdates {
-            self.collectionView.insertItems(at: newIndexPaths)
-        }
-    }
 }
 
