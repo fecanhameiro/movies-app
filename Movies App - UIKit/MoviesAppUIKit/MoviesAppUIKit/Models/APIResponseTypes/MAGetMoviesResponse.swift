@@ -8,14 +8,10 @@
 import Foundation
 
 struct MAGetMoviesResponse: Codable {
-    let page: Int
+    let searchType: String
     let results: [MAMovie]
-    let totalPages: Int
-    let totalResults: Int
+    let expression: String
+    let errorMessage: String
     
-    enum CodingKeys: String, CodingKey {
-        case page, results
-        case totalPages = "total_pages"
-        case totalResults = "total_results"
-    }
+  
 }

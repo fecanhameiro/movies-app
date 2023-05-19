@@ -26,7 +26,7 @@ final class MAMovieListViewViewModel: NSObject {
             for movie in movies {
                 let viewModel = MAMovieCollectionViewCellViewModel(
                     movieTitle: movie.title,
-                    movieImageUrl: URL(string: Constants.baseImageUrl + movie.posterPath)
+                    movieImageUrl: URL(string: movie.image)
                 )
                 if !cellViewModels.contains(viewModel) {
                     cellViewModels.append(viewModel)
@@ -49,8 +49,8 @@ final class MAMovieListViewViewModel: NSObject {
             switch result {
                 case .success(let responseModel):
                     self?.movies = responseModel.results
-                    self?.apiPage = responseModel.page
-                    self?.apiTotalPages = responseModel.totalPages
+                    self?.apiPage = 0
+                    self?.apiTotalPages = 0
                     DispatchQueue.main.async {
                         self?.delegate?.didLoadInitialMovies()
                     }
@@ -77,10 +77,10 @@ final class MAMovieListViewViewModel: NSObject {
             }
             switch result {
                 case .success(let responseModel):
-                    let moreResults = responseModel.results
+                    let moreResults =  responseModel.results
                     
-                    strongSelf.apiPage = responseModel.page
-                    strongSelf.apiTotalPages = responseModel.totalPages
+                    strongSelf.apiPage = 0
+                    strongSelf.apiTotalPages = 0
                     
                     let originalCount = strongSelf.movies.count
                     let newCount = moreResults.count

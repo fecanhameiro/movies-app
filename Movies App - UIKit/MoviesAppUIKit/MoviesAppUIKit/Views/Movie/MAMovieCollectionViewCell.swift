@@ -12,6 +12,7 @@ import UIKit
 /// Single cell for a movie
 final class MAMovieCollectionViewCell: UICollectionViewCell {
     static let cellIdentifier = "MAMovieCollectionViewCell"
+    private var maskLayer: CAShapeLayer?
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -38,34 +39,40 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .secondarySystemBackground
         contentView.addSubviews(imageView, titleLabel)
         addConstraints()
-        setUpLayer()
     }
     
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
     }
     
-    private func setUpLayer() {
-        contentView.layer.cornerRadius = 8
-        contentView.layer.masksToBounds = true
-        contentView.layer.shadowColor = UIColor.label.cgColor
-        contentView.layer.shadowOffset = CGSize(width: -4, height: 4)
-        contentView.layer.shadowOpacity = 0.3
-        
-        // Glassmorphism effect
-        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = contentView.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurEffectView.layer.cornerRadius = 8
-        blurEffectView.layer.masksToBounds = true
-        contentView.backgroundColor = UIColor.clear
-        contentView.insertSubview(blurEffectView, at: 0)
-        
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setUpLayer()
     }
+    
+    private func setUpLayer() {
 
-
-
+        if let maskLayer = self.maskLayer {
+            maskLayer.frame = bounds
+            maskLayer.path = UIBezierPath(roundedRect: bounds,
+                                          byRoundingCorners: [.allCorners],
+                                          cornerRadii: CGSize(width: 8.0, height: 8.0)).cgPath
+        } else {
+            let maskLayer = CAShapeLayer()
+            maskLayer.frame = bounds
+            maskLayer.path = UIBezierPath(roundedRect: bounds,
+                                          byRoundingCorners: [.allCorners],
+                                          cornerRadii: CGSize(width: 8.0, height: 8.0)).cgPath
+            contentView.layer.mask = maskLayer
+            self.maskLayer = maskLayer
+        }
+        
+        layer.shadowColor = UIColor.label.cgColor
+        layer.shadowOffset = CGSize(width: -4, height: 4)
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 4
+        layer.masksToBounds = false
+    }
     
     private func addConstraints() {
         NSLayoutConstraint.activate([

@@ -10,9 +10,5 @@ import Foundation
 /// Represents unique API endpoint
 @frozen enum MAEndpoint: String, CaseIterable, Hashable {
     /// Endpoint to get movies info
-    case movieSearch = "search/movie"
-}
-
-struct Constants {
-    static let baseImageUrl = "https://image.tmdb.org/t/p/w500/"
+    case movieSearch = "SearchMovie"
 }

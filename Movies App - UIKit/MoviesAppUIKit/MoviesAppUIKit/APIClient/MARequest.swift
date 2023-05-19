@@ -11,8 +11,8 @@ import Foundation
 final class MARequest {
     /// API Constants
     private struct Constants {
-        static let baseUrl = "https://api.themoviedb.org/3/"
-        static let apiKey = "ff133c53c29f3ccec13c9056deb4865f"
+        static let baseUrl = "https://imdb-api.com/en/API"
+        static let apiKey = "k_q0vpw8zr"
     }
     
     /// Desired endpoint
@@ -35,9 +35,7 @@ final class MARequest {
                 string += "/\($0)"
             })
         }
-        
-        string += "?api_key=\(Constants.apiKey)"
-        
+                
         if !queryParameters.isEmpty {
             string += "&"
             let argumentString = queryParameters.compactMap({
@@ -135,10 +133,5 @@ final class MARequest {
 extension MARequest {
     
     
-    static let listMoviesRequests = MARequest(endpoint: .movieSearch, queryParameters: [
-        URLQueryItem(name: "query", value: "avatar"),
-        URLQueryItem(name: "include_adult", value: "false"),
-        URLQueryItem(name: "language", value: "en-US"),
-        URLQueryItem(name: "page", value: "1")
-    ])
+    static let listMoviesRequests = MARequest(endpoint: .movieSearch, pathComponents:  [Constants.apiKey, "avatar"])
 }
