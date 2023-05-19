@@ -12,6 +12,4 @@ struct MAGetMoviesResponse: Codable {
     let results: [MAMovie]
     let expression: String
     let errorMessage: String
-    
-  
 }

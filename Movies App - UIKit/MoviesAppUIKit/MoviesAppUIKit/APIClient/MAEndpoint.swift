@@ -9,6 +9,8 @@ import Foundation
 
 /// Represents unique API endpoint
 @frozen enum MAEndpoint: String, CaseIterable, Hashable {
-    /// Endpoint to get movies info
+    /// Endpoint to get movies list
     case movieSearch = "SearchMovie"
+    /// Endpoint to get movie rating
+    case movieRating = "Ratings"
 }

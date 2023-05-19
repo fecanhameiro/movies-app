@@ -28,6 +28,8 @@
 		3405503B2A169A3000CED8F7 /* MAMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3405503A2A169A3000CED8F7 /* MAMovieCollectionViewCell.swift */; };
 		3405503D2A169AD200CED8F7 /* MAFooterLoadingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3405503C2A169AD200CED8F7 /* MAFooterLoadingCollectionReusableView.swift */; };
 		3405503F2A169C1900CED8F7 /* MATabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3405503E2A169C1900CED8F7 /* MATabBarController.swift */; };
+		344FE0B72A17BA570011E40C /* MARating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FE0B62A17BA570011E40C /* MARating.swift */; };
+		344FE0B92A17BAA20011E40C /* MAGetRatingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FE0B82A17BAA20011E40C /* MAGetRatingResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		3405503A2A169A3000CED8F7 /* MAMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		3405503C2A169AD200CED8F7 /* MAFooterLoadingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAFooterLoadingCollectionReusableView.swift; sourceTree = "<group>"; };
 		3405503E2A169C1900CED8F7 /* MATabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabBarController.swift; sourceTree = "<group>"; };
+		344FE0B62A17BA570011E40C /* MARating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MARating.swift; sourceTree = "<group>"; };
+		344FE0B82A17BAA20011E40C /* MAGetRatingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGetRatingResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				340550232A168D5800CED8F7 /* MAMovie.swift */,
+				344FE0B62A17BA570011E40C /* MARating.swift */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				340550272A168E0A00CED8F7 /* MAGetMoviesResponse.swift */,
+				344FE0B82A17BAA20011E40C /* MAGetRatingResponse.swift */,
 			);
 			path = APIResponseTypes;
 			sourceTree = "<group>";
@@ -292,12 +298,14 @@
 				340550012A16784500CED8F7 /* ViewController.swift in Sources */,
 				34054FFD2A16784500CED8F7 /* AppDelegate.swift in Sources */,
 				340550382A1698FB00CED8F7 /* MAMovieCollectionViewCellViewModel.swift in Sources */,
+				344FE0B92A17BAA20011E40C /* MAGetRatingResponse.swift in Sources */,
 				340550362A1694E300CED8F7 /* MAMovieListViewViewModelDelegate.swift in Sources */,
 				340550182A16888100CED8F7 /* MAEndpoint.swift in Sources */,
 				3405501E2A168B5B00CED8F7 /* MAAPICacheManager.swift in Sources */,
 				340550282A168E0A00CED8F7 /* MAGetMoviesResponse.swift in Sources */,
 				340550242A168D5800CED8F7 /* MAMovie.swift in Sources */,
 				340550312A1692EF00CED8F7 /* MAMovieDetailViewController.swift in Sources */,
+				344FE0B72A17BA570011E40C /* MARating.swift in Sources */,
 				3405503B2A169A3000CED8F7 /* MAMovieCollectionViewCell.swift in Sources */,
 				34054FFF2A16784500CED8F7 /* SceneDelegate.swift in Sources */,
 				3405503F2A169C1900CED8F7 /* MATabBarController.swift in Sources */,

@@ -30,14 +30,22 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
- 
+    private let ratingLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 14, weight: .light)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    
     
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .secondarySystemBackground
-        contentView.addSubviews(imageView, titleLabel)
+        contentView.addSubviews(imageView, titleLabel, ratingLabel)
         addConstraints()
     }
     
@@ -51,7 +59,7 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUpLayer() {
-
+        
         if let maskLayer = self.maskLayer {
             maskLayer.frame = bounds
             maskLayer.path = UIBezierPath(roundedRect: bounds,
@@ -85,9 +93,14 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
             titleLabel.heightAnchor.constraint(equalToConstant: 30),
             titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 7),
             titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -7),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            ratingLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            ratingLabel.heightAnchor.constraint(equalToConstant: 30),
+            ratingLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 7),
+            ratingLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -7),
+            ratingLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
-
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -99,6 +112,7 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         imageView.image = nil
         titleLabel.text = nil
+        ratingLabel.text = nil
     }
     
     public func configure(with viewModel: MAMovieCollectionViewCellViewModel) {
@@ -109,6 +123,28 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
                     DispatchQueue.main.async {
                         let image = UIImage(data: data)
                         self?.imageView.image = image
+                    }
+                case .failure(let error):
+                    print(String(describing: error))
+                    break
+            }
+        }
+        
+        viewModel.fetchRating{ [weak self] result in
+            switch result {
+                case .success(let data):
+                    
+                    DispatchQueue.main.async {
+                        let ratingText = "IMDB:"
+                        
+                        if let imdb = data.imDb, data.imDb != ""
+                        {
+                            self?.ratingLabel.text = "\(ratingText) \(imdb)"
+                        }
+                        else
+                        {
+                            self?.ratingLabel.text = "\(ratingText) -"
+                        }
                     }
                 case .failure(let error):
                     print(String(describing: error))

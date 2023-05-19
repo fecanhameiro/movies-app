@@ -25,6 +25,7 @@ final class MAMovieListViewViewModel: NSObject {
         didSet {
             for movie in movies {
                 let viewModel = MAMovieCollectionViewCellViewModel(
+                    movieId: movie.id,
                     movieTitle: movie.title,
                     movieImageUrl: URL(string: movie.image)
                 )

@@ -29,6 +29,8 @@ final class MARequest {
         var string = Constants.baseUrl
         string += "/"
         string += endpoint.rawValue
+        string += "/"
+        string += Constants.apiKey
         
         if !pathComponents.isEmpty {
             pathComponents.forEach({
@@ -133,5 +135,5 @@ final class MARequest {
 extension MARequest {
     
     
-    static let listMoviesRequests = MARequest(endpoint: .movieSearch, pathComponents:  [Constants.apiKey, "avatar"])
+    static let listMoviesRequests = MARequest(endpoint: .movieSearch, pathComponents:  ["avatar"])
 }
