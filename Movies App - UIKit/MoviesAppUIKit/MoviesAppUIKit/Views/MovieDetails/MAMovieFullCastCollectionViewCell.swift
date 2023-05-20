@@ -106,7 +106,7 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
             self.nameLabel.text = viewModel.name
         }
         
-        imageView.accessibilityLabel = viewModel.name
+        imageView.accessibilityLabel = "\(viewModel.title ?? ""), \(viewModel.name ?? "")"
         
         if let imageUrl = viewModel.castImageUrl {
             spinnerImage.startAnimating()

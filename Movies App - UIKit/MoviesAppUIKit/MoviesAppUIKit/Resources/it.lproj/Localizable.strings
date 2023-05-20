@@ -12,6 +12,7 @@
 
 //MA MOVIE LIST
 "movie-list-title" = "Film";
+"movie-list-no-rating" = "Non disponiamo di informazioni sulla valutazione imdb per questo film.";
 "movie-search-message" = "Non abbiamo trovato film corrispondenti alla tua ricerca :(";
 "error-message-movie-error" = "Errore";
 "error-message-movie-top" = "Si è verificato un errore imprevisto durante il recupero dei film più popolari.";

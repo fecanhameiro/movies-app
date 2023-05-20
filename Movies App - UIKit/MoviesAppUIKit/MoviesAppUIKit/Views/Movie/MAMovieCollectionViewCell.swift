@@ -19,6 +19,7 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.sd_imageTransition = .fade
+        imageView.isAccessibilityElement = true
         return imageView
     }()
     
@@ -126,6 +127,9 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
     }
     
     public func configure(with viewModel: MAMovieCollectionViewCellViewModel) {
+        
+
+        
         if let imageUrl = viewModel.movieImageUrl {
             spinnerImage.startAnimating()
             imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: []) { [weak self] (_, _, _, _) in
@@ -142,24 +146,36 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
             }
         }
         
+        let ratingText = "IMDB:"
+        
         if viewModel.rating?.imDb == nil || viewModel.rating?.imDb == "" {
             viewModel.fetchRating { [weak self] result in
                 switch result {
                     case .success(let data):
                         DispatchQueue.main.async {
-                            let ratingText = "IMDB:"
+                           
                             if let imdb = data.imDb, data.imDb != "" {
                                 self?.ratingLabel.text = "\(ratingText) \(imdb)"
+                                self?.imageView.accessibilityLabel = "\(viewModel.movieTitle). \(ratingText) \(imdb)"
                             }
                             else {
                                 self?.ratingLabel.text = "\(ratingText) -"
+                                self?.imageView.accessibilityLabel = "\(viewModel.movieTitle). \("movie-list-no-rating".localized())"
                             }
+                            
+                           
                         }
                     case .failure(let error):
                         print(String(describing: error))
                 }
             }
         }
+        else
+        {
+            self.imageView.accessibilityLabel = "\(viewModel.movieTitle). \(ratingText) \(viewModel.rating?.imDb ?? "movie-list-no-rating".localized())"
+        }
+        
+     
     }
 
 }

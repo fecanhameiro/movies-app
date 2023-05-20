@@ -12,6 +12,7 @@
 
 //MA MOVIE LIST
 "movie-list-title" = "Movies";
+"movie-list-no-rating" = "We don't have imdb rating information for this movie.";
 "movie-search-message" = "We couldn't find any movies matching your search :(";
 "error-message-movie-error" = "Error";
 "error-message-movie-top" = "An unexpected error occurred while fetching the most popular movies.";
