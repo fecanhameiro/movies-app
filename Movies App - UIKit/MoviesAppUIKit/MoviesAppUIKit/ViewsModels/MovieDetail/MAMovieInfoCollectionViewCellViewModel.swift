@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A ViewModel class responsible for preparing and managing the data needed for the MAMovieInfoCollectionViewCell, which displays detailed movie information.
 final class MAMovieInfoCollectionViewCellViewModel {
     private let type: `Type`
     private let value: String

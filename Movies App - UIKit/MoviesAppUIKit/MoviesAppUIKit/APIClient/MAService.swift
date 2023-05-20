@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Primary API service object to get movies data
+/// A service class responsible for orchestrating network requests, decoding responses, and handling errors. It abstracts the underlying network calls and provides a high-level API for data retrieval.
 final class MAService {
     /// Shared singleton instance
     static let shared = MAService()

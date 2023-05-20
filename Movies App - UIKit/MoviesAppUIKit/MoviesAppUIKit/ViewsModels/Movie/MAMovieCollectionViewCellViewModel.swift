@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A ViewModel class that prepares and manages the data required for displaying a movie in the MAMovieCollectionViewCell.
 final class MAMovieCollectionViewCellViewModel: Hashable, Equatable {
     public let movieId: String
     public let movieTitle: String

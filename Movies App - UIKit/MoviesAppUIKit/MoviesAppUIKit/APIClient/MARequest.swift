@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Object that represents a singlet API call
+/// A class that encapsulates all the details necessary to construct an HTTP request, including the URL, HTTP method, headers, and any query or body parameters. This class is used by the MAService to initiate network requests.
 final class MARequest {
     
     /// API Constants

@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A UICollectionReusableView subclass that contains a search bar for user queries.
 class RMHeaderSearchCollectionReusableView: UICollectionReusableView, UISearchBarDelegate {
     static let identifier = "RMHeaderSearchCollectionReusableView"
     var searchBar: UISearchBar!

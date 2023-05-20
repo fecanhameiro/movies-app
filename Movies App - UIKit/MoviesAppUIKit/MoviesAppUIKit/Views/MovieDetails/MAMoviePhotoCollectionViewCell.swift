@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+///  This class is a UICollectionViewCell subclass that manages the display of a movie photo within a collection view.
 final class MAMoviePhotoCollectionViewCell: UICollectionViewCell {
     static let cellIdentifer = "MAMoviePhotoCollectionViewCell"
     
@@ -15,6 +16,7 @@ final class MAMoviePhotoCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.isAccessibilityElement = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -65,6 +67,7 @@ final class MAMoviePhotoCollectionViewCell: UICollectionViewCell {
                     DispatchQueue.main.async {
                         self?.spinnerImage.stopAnimating()
                         self?.imageView.image = UIImage(data: data)
+                        self?.imageView.accessibilityLabel = viewModel.accessibilityText
                     }
                 case .failure:
                     break

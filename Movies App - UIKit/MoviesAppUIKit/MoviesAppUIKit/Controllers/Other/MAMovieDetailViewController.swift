@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// Controller to show info about single movie
+/// CA UIViewController subclass managing the interactions and data of the movie detail view.
 final class MAMovieDetailViewController: UIViewController {
     private let viewModel: MAMovieDetailViewViewModel
     

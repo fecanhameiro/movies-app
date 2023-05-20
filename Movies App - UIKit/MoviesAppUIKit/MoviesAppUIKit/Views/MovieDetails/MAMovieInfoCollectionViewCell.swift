@@ -7,6 +7,7 @@
 
 import UIKit
 
+///  A UICollectionViewCell subclass that manages the display of detailed information about a movie within a collection view.
 final class MAMovieInfoCollectionViewCell: UICollectionViewCell {
     static let cellIdentifer = "MAMovieInfoCollectionViewCell"
     
@@ -38,7 +39,7 @@ final class MAMovieInfoCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .tertiarySystemBackground
+        contentView.backgroundColor = .systemBackground
         contentView.layer.cornerRadius = 8
         contentView.layer.masksToBounds = true
         contentView.addSubviews(iconImageView, valueLabel, titleLabel)

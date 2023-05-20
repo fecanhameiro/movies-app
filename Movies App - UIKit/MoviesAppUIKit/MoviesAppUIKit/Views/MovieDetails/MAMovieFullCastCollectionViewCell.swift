@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 
+/// A UICollectionViewCell subclass designed to handle the display of full cast information of a movie within a collection view.
 class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
     static let cellIdentifer = "MAMovieFullCastCollectionViewCell"
     private var maskLayer: CAShapeLayer?
@@ -33,6 +34,7 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.sd_imageTransition = .fade
         imageView.image = UIImage(named: "movie-place-holder")
+        imageView.isAccessibilityElement = true
         return imageView
     }()
     
@@ -48,7 +50,7 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .tertiarySystemBackground
+        contentView.backgroundColor = .tertiarySystemGroupedBackground
         setUpLayer()
         contentView.addSubviews(titleLabel, nameLabel, imageView, spinnerImage)
         setUpConstraints()
@@ -59,23 +61,11 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUpLayer() {
-        contentView.layer.borderWidth = 2
         
-        if let maskLayer = self.maskLayer {
-            maskLayer.frame = bounds
-            maskLayer.path = UIBezierPath(roundedRect: bounds,
-                                          byRoundingCorners: [.allCorners],
-                                          cornerRadii: CGSize(width: 8.0, height: 8.0)).cgPath
-        } else {
-            let maskLayer = CAShapeLayer()
-            maskLayer.frame = bounds
-            maskLayer.path = UIBezierPath(roundedRect: bounds,
-                                          byRoundingCorners: [.allCorners],
-                                          cornerRadii: CGSize(width: 8.0, height: 8.0)).cgPath
-            contentView.layer.mask = maskLayer
-            self.maskLayer = maskLayer
-        }
-        
+        layer.cornerRadius = 8
+        layer.masksToBounds = true
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.secondaryLabel.cgColor
         
     }
     
@@ -115,6 +105,8 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
             self.titleLabel.text = viewModel.title
             self.nameLabel.text = viewModel.name
         }
+        
+        imageView.accessibilityLabel = viewModel.name
         
         if let imageUrl = viewModel.castImageUrl {
             spinnerImage.startAnimating()

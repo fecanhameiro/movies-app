@@ -9,7 +9,7 @@ import Foundation
 
 import UIKit
 
-/// VIew for single movie info
+/// A UIView subclass that handles the display of detailed information about a selected movie.
 final class MAMovieDetailView: UIView {
     
     public var collectionView: UICollectionView?

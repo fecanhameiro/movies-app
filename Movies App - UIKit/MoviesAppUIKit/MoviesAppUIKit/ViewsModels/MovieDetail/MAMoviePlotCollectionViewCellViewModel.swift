@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A ViewModel class that prepares and manages the data needed for the MAMoviePlotCollectionViewCell, which displays a movie's plot.
 final class MAMoviePlotCollectionViewCellViewModel {
     public let text: String?
     

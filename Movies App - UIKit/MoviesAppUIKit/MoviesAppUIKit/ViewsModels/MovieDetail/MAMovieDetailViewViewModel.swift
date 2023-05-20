@@ -11,6 +11,7 @@ protocol MAMovieDetailViewViewModelDelegate: AnyObject {
     func didLoadMovieDetails()
 }
 
+/// A ViewModel class managing the data required for the MAMovieDetailView, which displays detailed information about a movie.
 final class MAMovieDetailViewViewModel {
     
     public weak var delegate: MAMovieDetailViewViewModelDelegate?
@@ -19,7 +20,6 @@ final class MAMovieDetailViewViewModel {
     private let movieId: String
     private var movieTitle: String
     
-    /// Fetch initial set of movies
     public func fetchMovieDetail() {
         
         let request = MARequest(endpoint: .movieDetails, pathComponents: [self.movieId, "FullCast"])
@@ -81,7 +81,7 @@ final class MAMovieDetailViewViewModel {
         }) ?? [])
         
         sections = [
-            .photo(viewModel: .init(imageUrl: URL(string: movieDetails?.image ?? ""))),
+            .photo(viewModel: .init(imageUrl: URL(string: movieDetails?.image ?? ""), accessibilityText: movieDetails?.title)),
             .information(viewModels: [
                 .init(type: .title , value: movieDetails?.title ?? "-"),
                 .init(type: .releaseDate , value: releaseDate)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+/// A ViewModel class that handles the data for the MAMovieFullCastCollectionViewCell, showcasing the full cast of a movie.
 final class MAMovieCastCollectionViewCellViewModel {
     
     public let borderColor: UIColor

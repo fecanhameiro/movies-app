@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// This UICollectionViewCell subclass is responsible for displaying the plot or synopsis of a movie within a collection view.
 final class MAMoviePlotCollectionViewCell: UICollectionViewCell {
     static let cellIdentifer = "MAMoviePlotCollectionViewCell"
     

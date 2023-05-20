@@ -16,7 +16,7 @@ protocol MAMovieListViewViewModelDelegate: AnyObject {
     
 }
 
-/// View Model to handle movie  list view logic
+/// This ViewModel class manages the data for the movie list view, including handling movie loading and refreshing.
 final class MAMovieListViewViewModel: NSObject {
     
     public weak var delegate: MAMovieListViewViewModelDelegate?

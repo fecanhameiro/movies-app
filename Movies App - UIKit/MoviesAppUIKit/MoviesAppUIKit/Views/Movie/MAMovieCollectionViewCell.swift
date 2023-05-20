@@ -8,7 +8,7 @@
 import SDWebImage
 import UIKit
 
-/// Single cell for a movie
+/// UICollectionViewCell subclass that displays a single movie's details including image, title and rating.
 final class MAMovieCollectionViewCell: UICollectionViewCell {
     static let cellIdentifier = "MAMovieCollectionViewCell"
     private var maskLayer: CAShapeLayer?
@@ -83,7 +83,7 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
         }
         
         layer.shadowColor = UIColor.label.cgColor
-        layer.shadowOffset = CGSize(width: -4, height: 4)
+        layer.shadowOffset = CGSize(width: -1, height: 4)
         layer.shadowOpacity = 0.3
         layer.shadowRadius = 4
         layer.masksToBounds = false

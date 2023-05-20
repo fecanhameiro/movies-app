@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// Controller to show and search for Movies
+///  A UIViewController subclass that controls the interactions and data of the movie list view.
 class MAMovieViewController: UIViewController, MAMovieListViewDelegate {
 
     private let movieListView = MAMovieListView()

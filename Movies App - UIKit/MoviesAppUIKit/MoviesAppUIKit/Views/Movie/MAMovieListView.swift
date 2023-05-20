@@ -12,7 +12,7 @@ protocol MAMovieListViewDelegate: AnyObject {
     func maMovieListViewShowError(_ message: String)
 }
 
-/// View that handles showing list of movies, loader, etc.
+/// This class is a UIView subclass that manages the display of a list of movies, including loading and refreshing the list.
 final class MAMovieListView: UIView {
     
     public weak var delegate: MAMovieListViewDelegate?
