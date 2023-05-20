@@ -9,12 +9,11 @@ import Foundation
 
 /// Object that represents a singlet API call
 final class MARequest {
+    
     /// API Constants
     private struct Constants {
-        static let baseUrl = "https://imdb-api.com/en/API"
+        static let baseUrl = "https://imdb-api.com"
         static let apiKey = "k_q0vpw8zr"
-//        static let apiKey = "k_xwpou38b"
-//        static let apiKey = "k_yrxlau31"
     }
     
     /// Desired endpoint
@@ -28,8 +27,18 @@ final class MARequest {
     
     /// Constructed url for the api request in string format
     private var urlString: String {
+        
+        var languageCode = "en"
+        
+        //get the cell phone language set
+        if let preferredLanguage = Locale.preferredLanguages.first {
+            languageCode =  String(preferredLanguage.prefix(2))
+        }
+        
+        
         var string = Constants.baseUrl
         string += "/"
+        string += "\(languageCode)/API/"
         string += endpoint.rawValue
         string += "/"
         string += Constants.apiKey

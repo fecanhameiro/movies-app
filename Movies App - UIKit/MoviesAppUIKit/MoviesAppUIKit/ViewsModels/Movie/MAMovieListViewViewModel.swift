@@ -12,6 +12,8 @@ protocol MAMovieListViewViewModelDelegate: AnyObject {
     func didSelectMovie(_ movie: MAMovie)
     func didStartLoadingMovies()
     func shouldShowEmptyMessage(_ show: Bool)
+    func showErrorMessage(_ message: String)
+    
 }
 
 /// View Model to handle movie  list view logic
@@ -56,6 +58,7 @@ final class MAMovieListViewViewModel: NSObject {
                     }
                 case .failure(let error):
                     print(String(describing: error))
+                    self?.delegate?.showErrorMessage("Ocorreu um erro inesperado ao buscar os filmes mais populares.")
             }
         }
     }
@@ -69,6 +72,7 @@ final class MAMovieListViewViewModel: NSObject {
         
         guard let encodedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             print("Error encoding searchText")
+            self.delegate?.showErrorMessage("Nao foi possivel converter seu texto de busca.")
             return
         }
         
@@ -87,9 +91,12 @@ final class MAMovieListViewViewModel: NSObject {
                     }
                 case .failure(let error):
                     print(String(describing: error))
+                    self?.delegate?.showErrorMessage("Ocorreu um erro inesperado ao buscar os filmes o seu filme.")
             }
         }
     }
+    
+ 
     
 }
 

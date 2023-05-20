@@ -8,10 +8,8 @@
 import UIKit
 
 protocol MAMovieListViewDelegate: AnyObject {
-    func maMovieListView(
-        _ movieListView: MAMovieListView,
-        didSelectMovie movie: MAMovie
-    )
+    func maMovieListView(_ movieListView: MAMovieListView,didSelectMovie movie: MAMovie)
+    func maMovieListViewShowError(_ message: String)
 }
 
 /// View that handles showing list of movies, loader, etc.
@@ -37,7 +35,7 @@ final class MAMovieListView: UIView {
         label.alpha = 0
         return label
     }()
-
+    
     
     private func createCollectionView() -> UICollectionView {
         let layout = createLayout()
@@ -59,11 +57,14 @@ final class MAMovieListView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
+        viewModel.delegate = self
         collectionView = createCollectionView()
         addSubviews(collectionView, spinner, emptyLabel)
         addConstraints()
-        viewModel.delegate = self
         setUpCollectionView()
+    }
+    
+    func fetchMovies() {
         viewModel.fetchMovies()
     }
     
@@ -118,11 +119,13 @@ final class MAMovieListView: UIView {
         
         return UICollectionViewCompositionalLayout(section: section)
     }
-
-
+    
+    
+    
 }
 
 extension MAMovieListView: MAMovieListViewViewModelDelegate {
+    
     func didSelectMovie(_ movie: MAMovie) {
         delegate?.maMovieListView(self, didSelectMovie: movie)
     }
@@ -130,19 +133,27 @@ extension MAMovieListView: MAMovieListViewViewModelDelegate {
     func didStartLoadingMovies() {
         spinner.startAnimating()
         shouldShowEmptyMessage(false)
-        collectionView.reloadData() 
+        collectionView.reloadData()
     }
     
     func didLoadedMovies() {
         spinner.stopAnimating()
-        collectionView.reloadData() 
+        collectionView.reloadData()
     }
     
     func shouldShowEmptyMessage(_ show: Bool) {
         
-        UIView.animate(withDuration: 0.1) {
-            self.emptyLabel.alpha = show ? 1 : 0
+        DispatchQueue.main.async {
+            self.spinner.stopAnimating()
+            UIView.animate(withDuration: 0.1) {
+                self.emptyLabel.alpha = show ? 1 : 0
+            }
         }
     }
+    
+    func showErrorMessage(_ message: String) {
+        delegate?.maMovieListViewShowError(message)
+    }
+    
 }
 

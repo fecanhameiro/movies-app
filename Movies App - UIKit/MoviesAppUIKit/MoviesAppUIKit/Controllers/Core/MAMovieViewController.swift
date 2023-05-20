@@ -20,10 +20,10 @@ class MAMovieViewController: UIViewController, MAMovieListViewDelegate {
     }
     
     
-    @objc private func didTapSearch() {
- 
+    deinit {
+        print("MAMovieViewController is being deallocated")
     }
-    
+
     private func setUpView() {
         movieListView.delegate = self
         view.addSubview(movieListView)
@@ -33,6 +33,8 @@ class MAMovieViewController: UIViewController, MAMovieListViewDelegate {
             movieListView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             movieListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+        
+        movieListView.fetchMovies()
     }
     
     // MARK: - MAMovieListViewDelegate
@@ -44,6 +46,13 @@ class MAMovieViewController: UIViewController, MAMovieListViewDelegate {
         detailVC.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(detailVC, animated: true)
     }
-
-
+    
+    func maMovieListViewShowError(_ message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
