@@ -1,43 +1,49 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-const MAMovieCard = ({ movie }) => {
+const MAMovieCard = ({ movie, navigation }) => {
     return (
-        <View style={styles.card}>
-            <Image
-                style={styles.image}
-                source={{ uri: movie.image }}  
-            />
-            <Text style={styles.title}>{movie.title}</Text>
-        </View>
-    );
+        <TouchableOpacity style={styles.touchable}  onPress={() => navigation.navigate('MAMovieDetails', { movie })}>
+            <View style={styles.card}>
+                <Image
+                    style={styles.image}
+                    source={{ uri: movie.image }}
+                />
+                <Text style={styles.title} numberOfLines={2}>{movie.title}</Text>
+            </View>
+        </TouchableOpacity>
+    )
 };
 
 const styles = StyleSheet.create({
-    card: {
+    touchable: {
         flex: 1,
         margin: 8,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#fff',
         borderRadius: 8,
+        elevation: 3,
+        shadowColor: '#000',
+        shadowOffset: { width: 1, height: 1 },
+        shadowOpacity: 0.3,
+        shadowRadius: 1,
+        height: 300,
+ 
+    },
+    card: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
         padding: 0,
-        elevation: 3, 
-        shadowColor: '#000', 
-        shadowOffset: { width: 1, height: 1 }, 
-        shadowOpacity: 0.3, 
-        shadowRadius: 1 
     },
     image: {
         width: '100%',
-        height: 200,
+        height: 220,
         borderRadius: 5,
         marginBottom: 10
     },
     title: {
         textAlign: 'left',
         fontSize: 14,
-        height: 30,
         paddingLeft: 8,
     }
 });
