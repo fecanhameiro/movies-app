@@ -54,20 +54,18 @@ final class MAMovieInfoCollectionViewCell: UICollectionViewCell {
             
             iconImageView.heightAnchor.constraint(equalToConstant: 18),
             iconImageView.widthAnchor.constraint(equalToConstant: 18),
-            iconImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 32),
+            iconImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-
+            
             valueLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 10),
             valueLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
             valueLabel.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
             
             titleLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 10),
             titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-            titleLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor), 
+            titleLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor),
         ])
-
-
-
+        
     }
     
     override func prepareForReuse() {

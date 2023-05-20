@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  MoviesAppUIKit
+
+  Created by Felipe C Canhameiro on 20/05/23.
+  
+*/
+
+
+//MA SEARCH BAR
+"search-bar-place-holder" = "Search for your favorite movie...";
+
+//MA MOVIE LIST
+"movie-list-title" = "Movies";
+"movie-search-message" = "We couldn't find any movies matching your search :(";
+"error-message-movie-error" = "Error";
+"error-message-movie-top" = "An unexpected error occurred while fetching the most popular movies.";
+"error-message-movie-search" = "An unexpected error occurred while fetching movies from your search";
+"error-message-movie-search-text" = "We were unable to convert your search text.";
+
+//MA MOVIE DETAILS
+"movie-details-title" = "Title";
+"movie-details-release-date" = "Release Date";

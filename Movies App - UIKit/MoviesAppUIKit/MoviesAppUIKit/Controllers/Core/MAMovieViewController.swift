@@ -15,13 +15,8 @@ class MAMovieViewController: UIViewController, MAMovieListViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Movies"
+        title = "movie-list-title".localized()
         setUpView()
-    }
-    
-    
-    deinit {
-        print("MAMovieViewController is being deallocated")
     }
 
     private func setUpView() {
@@ -49,7 +44,7 @@ class MAMovieViewController: UIViewController, MAMovieListViewDelegate {
     
     func maMovieListViewShowError(_ message: String) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            let alert = UIAlertController(title: "error-message-movie-error".localized(), message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

@@ -15,7 +15,7 @@ class RMHeaderSearchCollectionReusableView: UICollectionReusableView, UISearchBa
         super.init(frame: frame)
         searchBar = UISearchBar(frame: self.bounds)
         searchBar.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        searchBar.placeholder = "Pesquisa pelo seu filme preferido"
+        searchBar.placeholder = "search-bar-place-holder".localized()
         searchBar.delegate = self
         addSubview(searchBar)
     }

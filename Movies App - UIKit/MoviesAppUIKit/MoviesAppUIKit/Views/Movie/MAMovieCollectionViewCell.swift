@@ -131,7 +131,6 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
             imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: []) { [weak self] (_, _, _, _) in
                 DispatchQueue.main.async {
                     self?.spinnerImage.stopAnimating()
-                    self?.spinnerImage.removeFromSuperview()
                 }
             }
         }

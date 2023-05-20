@@ -28,11 +28,12 @@ final class MAMovieListView: UIView {
     
     private let emptyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Nenhum filme encontrado com a sua pesquisa :("
+        label.text = "movie-search-message".localized()
         label.textColor = .gray
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.alpha = 0
+        label.numberOfLines = 0
         return label
     }()
     
@@ -59,7 +60,7 @@ final class MAMovieListView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         viewModel.delegate = self
         collectionView = createCollectionView()
-        addSubviews(collectionView, spinner, emptyLabel)
+        addSubviews(collectionView, emptyLabel, spinner)
         addConstraints()
         setUpCollectionView()
     }
@@ -86,6 +87,8 @@ final class MAMovieListView: UIView {
             
             emptyLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             emptyLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            emptyLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 32),
+            emptyLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -32),
         ])
     }
     
@@ -120,8 +123,6 @@ final class MAMovieListView: UIView {
         return UICollectionViewCompositionalLayout(section: section)
     }
     
-    
-    
 }
 
 extension MAMovieListView: MAMovieListViewViewModelDelegate {
@@ -131,20 +132,24 @@ extension MAMovieListView: MAMovieListViewViewModelDelegate {
     }
     
     func didStartLoadingMovies() {
-        spinner.startAnimating()
+        DispatchQueue.main.async {
+            self.spinner.startAnimating()
+            self.collectionView.reloadData()
+        }
+        
         shouldShowEmptyMessage(false)
-        collectionView.reloadData()
     }
     
     func didLoadedMovies() {
-        spinner.stopAnimating()
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.spinner.stopAnimating()
+            self.collectionView.reloadData()
+        }
     }
     
     func shouldShowEmptyMessage(_ show: Bool) {
         
         DispatchQueue.main.async {
-            self.spinner.stopAnimating()
             UIView.animate(withDuration: 0.1) {
                 self.emptyLabel.alpha = show ? 1 : 0
             }

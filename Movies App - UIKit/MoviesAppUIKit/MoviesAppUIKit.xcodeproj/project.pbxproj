@@ -40,6 +40,7 @@
 		344FE0CF2A17D76D0011E40C /* MAMovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FE0CE2A17D76D0011E40C /* MAMovieDetails.swift */; };
 		344FE0D52A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FE0D42A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift */; };
 		344FE0D72A18205A0011E40C /* MAMoviePlotCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FE0D62A18205A0011E40C /* MAMoviePlotCollectionViewCellViewModel.swift */; };
+		34A245DF2A1929FF00C25D8B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34A245E12A1929FF00C25D8B /* Localizable.strings */; };
 		34DB84F82A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DB84F72A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift */; };
 		34DB84FA2A18DB9000D5E641 /* MAGetMostPopularMoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DB84F92A18DB9000D5E641 /* MAGetMostPopularMoviesResponse.swift */; };
 		34DB84FD2A18E0E200D5E641 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 34DB84FC2A18E0E200D5E641 /* SDWebImage */; };
@@ -81,6 +82,9 @@
 		344FE0CE2A17D76D0011E40C /* MAMovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMovieDetails.swift; sourceTree = "<group>"; };
 		344FE0D42A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMoviePlotCollectionViewCell.swift; sourceTree = "<group>"; };
 		344FE0D62A18205A0011E40C /* MAMoviePlotCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMoviePlotCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		34A245DC2A1929A800C25D8B /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		34A245E02A1929FF00C25D8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		34A245E22A192D8A00C25D8B /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		34DB84F72A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMHeaderSearchCollectionReusableView.swift; sourceTree = "<group>"; };
 		34DB84F92A18DB9000D5E641 /* MAGetMostPopularMoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGetMostPopularMoviesResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +195,7 @@
 				34054FFC2A16784500CED8F7 /* AppDelegate.swift */,
 				34054FFE2A16784500CED8F7 /* SceneDelegate.swift */,
 				340550212A168C3E00CED8F7 /* Extensions.swift */,
+				34A245E12A1929FF00C25D8B /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 34054FF02A16784400CED8F7;
 			packageReferences = (
@@ -341,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				340550092A16784700CED8F7 /* LaunchScreen.storyboard in Resources */,
+				34A245DF2A1929FF00C25D8B /* Localizable.strings in Resources */,
 				340550062A16784600CED8F7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,8 +402,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				340550082A16784700CED8F7 /* Base */,
+				34A245DC2A1929A800C25D8B /* it */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		34A245E12A1929FF00C25D8B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34A245E02A1929FF00C25D8B /* en */,
+				34A245E22A192D8A00C25D8B /* it */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -406,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -452,7 +470,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -466,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -506,7 +525,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

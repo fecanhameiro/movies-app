@@ -42,7 +42,7 @@ final class MAMovieListViewViewModel: NSObject {
     /// Fetch initial set of movies
     public func fetchMovies() {
         
-        self.cellViewModels.removeAll()
+        self.cellViewModels = []
         delegate?.didStartLoadingMovies()
         
         MAService.shared.execute(
@@ -58,7 +58,7 @@ final class MAMovieListViewViewModel: NSObject {
                     }
                 case .failure(let error):
                     print(String(describing: error))
-                    self?.delegate?.showErrorMessage("Ocorreu um erro inesperado ao buscar os filmes mais populares.")
+                    self?.delegate?.showErrorMessage("error-message-movie-top".localized())
             }
         }
     }
@@ -66,15 +66,14 @@ final class MAMovieListViewViewModel: NSObject {
     /// Fetch search movies
     public func fetchSearchMovies(searchText: String) {
         
-        self.cellViewModels.removeAll()
-        delegate?.didStartLoadingMovies()
-      
-        
         guard let encodedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             print("Error encoding searchText")
-            self.delegate?.showErrorMessage("Nao foi possivel converter seu texto de busca.")
+            self.delegate?.showErrorMessage("error-message-movie-search-text".localized())
             return
         }
+        
+        self.cellViewModels = []
+        delegate?.didStartLoadingMovies()
         
         let request = MARequest(endpoint: .movieSearch, pathComponents: [encodedSearchText])
         
@@ -91,7 +90,7 @@ final class MAMovieListViewViewModel: NSObject {
                     }
                 case .failure(let error):
                     print(String(describing: error))
-                    self?.delegate?.showErrorMessage("Ocorreu um erro inesperado ao buscar os filmes o seu filme.")
+                    self?.delegate?.showErrorMessage("error-message-movie-search".localized())
             }
         }
     }

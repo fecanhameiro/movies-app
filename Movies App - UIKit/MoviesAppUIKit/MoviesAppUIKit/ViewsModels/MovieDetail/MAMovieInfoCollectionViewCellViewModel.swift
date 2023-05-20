@@ -50,8 +50,8 @@ final class MAMovieInfoCollectionViewCellViewModel {
     }
     
     enum `Type`: String {
-        case title = "Title"
-        case releaseDate = "Release Date"
+        case title
+        case releaseDate
         
         var tintColor: UIColor {
             switch self {
@@ -68,16 +68,17 @@ final class MAMovieInfoCollectionViewCellViewModel {
                     return UIImage(systemName: "tv.circle")
                 case .releaseDate:
                     return UIImage(systemName: "calendar")
-              
+                    
             }
         }
         
         var displayTitle: String {
             switch self {
-                case .title,
-                        .releaseDate:
-                    return rawValue
-               
+                case .title:
+                    return "movie-details-title".localized()
+                case .releaseDate:
+                    return "movie-details-release-date".localized()
+                    
             }
         }
     }

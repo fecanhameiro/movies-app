@@ -23,7 +23,7 @@ final class MAMovieDetailView: UIView {
         return spinner
     }()
     
-
+    
     
     // MARK: - Init
     
@@ -106,6 +106,4 @@ extension MAMovieDetailView: MAMovieDetailViewViewModelDelegate {
             self.collectionView?.alpha = 1
         }
     }
-    
-    
 }

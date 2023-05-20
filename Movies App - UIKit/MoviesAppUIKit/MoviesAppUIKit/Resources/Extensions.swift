@@ -23,3 +23,10 @@ extension UIDevice {
     /// Check if current device is phone idiom
     static let isiPhone = UIDevice.current.userInterfaceIdiom == .phone
 }
+
+extension String {
+    
+    func localized() -> String {
+        return NSLocalizedString(self, tableName: "Localizable", bundle: .main, value: self, comment: self)
+    }
+}

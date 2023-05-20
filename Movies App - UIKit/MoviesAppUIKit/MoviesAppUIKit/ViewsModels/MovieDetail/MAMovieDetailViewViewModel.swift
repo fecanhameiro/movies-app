@@ -17,7 +17,7 @@ final class MAMovieDetailViewViewModel {
     
     private var movieDetails: MAMovieDetails?
     private let movieId: String
-    private var movieTitle: String = "Details"
+    private var movieTitle: String
     
     /// Fetch initial set of movies
     public func fetchMovieDetail() {
@@ -25,7 +25,7 @@ final class MAMovieDetailViewViewModel {
         let request = MARequest(endpoint: .movieDetails, pathComponents: [self.movieId, "FullCast"])
         
         MAService.shared.execute(request,
-            expecting: MAMovieDetails.self
+                                 expecting: MAMovieDetails.self
         ) { [weak self] result in
             switch result {
                 case .success(let model):
@@ -48,7 +48,7 @@ final class MAMovieDetailViewViewModel {
         case information(viewModels: [MAMovieInfoCollectionViewCellViewModel])
         
         case plot(viewModel: MAMoviePlotCollectionViewCellViewModel)
-                
+        
         case fullCast(viewModels: [MAMovieCastCollectionViewCellViewModel])
     }
     
@@ -91,7 +91,7 @@ final class MAMovieDetailViewViewModel {
         ]
     }
     
-
+    
     
     public var title: String {
         movieTitle.uppercased()
