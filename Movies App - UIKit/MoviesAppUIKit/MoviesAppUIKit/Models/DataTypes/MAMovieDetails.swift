@@ -9,12 +9,10 @@ import Foundation
 
 struct MAMovieDetails: Codable {
     let id: String
-    let title: String
-    let originalTitle: String
-    let fullTitle: String
-    let image: String
-    let releaseDate: String
-    let plot: String
+    let title: String?
+    let image: String?
+    let releaseDate: String?
+    let plot: String?
     let fullCast: MAFullCast?
  
 }

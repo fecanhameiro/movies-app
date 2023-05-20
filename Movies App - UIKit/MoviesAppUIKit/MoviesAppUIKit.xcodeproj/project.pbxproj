@@ -41,6 +41,7 @@
 		344FE0CF2A17D76D0011E40C /* MAMovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FE0CE2A17D76D0011E40C /* MAMovieDetails.swift */; };
 		344FE0D52A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FE0D42A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift */; };
 		344FE0D72A18205A0011E40C /* MAMoviePlotCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FE0D62A18205A0011E40C /* MAMoviePlotCollectionViewCellViewModel.swift */; };
+		34DB84F82A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DB84F72A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		344FE0CE2A17D76D0011E40C /* MAMovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMovieDetails.swift; sourceTree = "<group>"; };
 		344FE0D42A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMoviePlotCollectionViewCell.swift; sourceTree = "<group>"; };
 		344FE0D62A18205A0011E40C /* MAMoviePlotCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMoviePlotCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		34DB84F72A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMHeaderSearchCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 			children = (
 				340550332A16939D00CED8F7 /* MAMovieListView.swift */,
 				3405503A2A169A3000CED8F7 /* MAMovieCollectionViewCell.swift */,
+				34DB84F72A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -265,8 +268,8 @@
 				344FE0C62A17D18E0011E40C /* MAMovieDetailView.swift */,
 				344FE0C82A17D2280011E40C /* MAMoviePhotoCollectionViewCell.swift */,
 				344FE0CA2A17D25F0011E40C /* MAMovieInfoCollectionViewCell.swift */,
-				344FE0CC2A17D29C0011E40C /* MAMovieFullCastCollectionViewCell.swift */,
 				344FE0D42A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift */,
+				344FE0CC2A17D29C0011E40C /* MAMovieFullCastCollectionViewCell.swift */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				344FE0D52A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift in Sources */,
 				340550222A168C3E00CED8F7 /* Extensions.swift in Sources */,
 				344FE0CF2A17D76D0011E40C /* MAMovieDetails.swift in Sources */,
+				34DB84F82A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift in Sources */,
 				344FE0D72A18205A0011E40C /* MAMoviePlotCollectionViewCellViewModel.swift in Sources */,
 				34054FFD2A16784500CED8F7 /* AppDelegate.swift in Sources */,
 				340550382A1698FB00CED8F7 /* MAMovieCollectionViewCellViewModel.swift in Sources */,

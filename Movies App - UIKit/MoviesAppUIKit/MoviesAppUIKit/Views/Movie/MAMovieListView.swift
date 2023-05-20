@@ -18,7 +18,7 @@ protocol MAMovieListViewDelegate: AnyObject {
 final class MAMovieListView: UIView {
     
     public weak var delegate: MAMovieListViewDelegate?
-    
+    private var collectionView: UICollectionView!
     private let viewModel = MAMovieListViewViewModel()
     
     private let spinner: UIActivityIndicatorView = {
@@ -28,32 +28,30 @@ final class MAMovieListView: UIView {
         return spinner
     }()
     
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+    private func createCollectionView() -> UICollectionView {
+        let layout = createLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.isHidden = true
-        collectionView.alpha = 0
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(MAMovieCollectionViewCell.self,
-                                forCellWithReuseIdentifier: MAMovieCollectionViewCell.cellIdentifier)
-        collectionView.register(MAFooterLoadingCollectionReusableView.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-                                withReuseIdentifier: MAFooterLoadingCollectionReusableView.identifier)
+        collectionView.register(
+            RMHeaderSearchCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: RMHeaderSearchCollectionReusableView.identifier
+        )
+        collectionView.register(
+            MAMovieCollectionViewCell.self,
+            forCellWithReuseIdentifier: MAMovieCollectionViewCell.cellIdentifier
+        )
         return collectionView
-    }()
-    
+    }
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
+        collectionView = createCollectionView()
         addSubviews(collectionView, spinner)
         addConstraints()
-        spinner.startAnimating()
         viewModel.delegate = self
-        viewModel.fetchMovies()
         setUpCollectionView()
     }
     
@@ -79,6 +77,34 @@ final class MAMovieListView: UIView {
         collectionView.dataSource = viewModel
         collectionView.delegate = viewModel
     }
+    
+    private func createLayout() -> UICollectionViewCompositionalLayout {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(300)) // aqui, você define a altura como 150
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .absolute(300))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2) // 2 itens por grupo
+        group.interItemSpacing = .fixed(12)
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                heightDimension: .estimated(50))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                                 elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 12
+        section.boundarySupplementaryItems = [header]
+        
+        section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12)
+        
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+
+
 }
 
 extension MAMovieListView: MAMovieListViewViewModelDelegate {
@@ -86,13 +112,13 @@ extension MAMovieListView: MAMovieListViewViewModelDelegate {
         delegate?.maMovieListView(self, didSelectMovie: movie)
     }
     
-    func didLoadInitialMovies() {
+    func didStartLoadingMovies() {
+        spinner.startAnimating()
+    }
+    
+    func didLoadedMovies() {
         spinner.stopAnimating()
-        collectionView.isHidden = false
-        collectionView.reloadData() // Initial fetch
-        UIView.animate(withDuration: 0.4) {
-            self.collectionView.alpha = 1
-        }
+        collectionView.reloadData() 
     }
     
 }

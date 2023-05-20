@@ -162,7 +162,7 @@ final class MAMovieDetailViewViewModel {
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize:  NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalHeight(1)
+                heightDimension: .absolute(100)
             ),
             subitems: [item]
         )

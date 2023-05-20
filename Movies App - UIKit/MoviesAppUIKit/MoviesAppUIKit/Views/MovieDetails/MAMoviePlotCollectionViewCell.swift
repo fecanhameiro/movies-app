@@ -33,8 +33,8 @@ final class MAMoviePlotCollectionViewCell: UICollectionViewCell {
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            textView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            textView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            textView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),
+            textView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -24),
             textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }

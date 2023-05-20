@@ -12,9 +12,8 @@ final class MAMovieInfoCollectionViewCell: UICollectionViewCell {
     
     private let valueLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .light)
+        label.font = .systemFont(ofSize: 18, weight: .medium)
         return label
     }()
     
@@ -22,7 +21,7 @@ final class MAMovieInfoCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 10, weight: .light)
+        label.font = .systemFont(ofSize: 13, weight: .light)
         return label
     }()
     

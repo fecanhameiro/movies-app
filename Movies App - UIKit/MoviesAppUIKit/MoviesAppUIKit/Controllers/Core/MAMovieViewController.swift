@@ -17,12 +17,8 @@ class MAMovieViewController: UIViewController, MAMovieListViewDelegate {
         view.backgroundColor = .systemBackground
         title = "Movies"
         setUpView()
-        addSearchButton()
     }
     
-    private func addSearchButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
-    }
     
     @objc private func didTapSearch() {
  

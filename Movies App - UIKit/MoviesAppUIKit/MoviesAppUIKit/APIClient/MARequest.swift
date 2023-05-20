@@ -12,9 +12,9 @@ final class MARequest {
     /// API Constants
     private struct Constants {
         static let baseUrl = "https://imdb-api.com/en/API"
-       // static let apiKey = "k_q0vpw8zr"
+        static let apiKey = "k_q0vpw8zr"
 //        static let apiKey = "k_xwpou38b"
-        static let apiKey = "k_yrxlau31"
+//        static let apiKey = "k_yrxlau31"
     }
     
     /// Desired endpoint
