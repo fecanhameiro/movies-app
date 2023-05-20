@@ -10,19 +10,21 @@ import Foundation
 final class MAMovieCollectionViewCellViewModel: Hashable, Equatable {
     public let movieId: String
     public let movieTitle: String
-    private let movieImageUrl: URL?
-    private var rating: MARating? = nil
+    public let movieImageUrl: URL?
+    public var rating: MARating? = nil
     
     // MARK: - Init
     
     init(
         movieId: String,
         movieTitle: String,
-        movieImageUrl: URL?
+        movieImageUrl: URL?,
+        rating: MARating? = nil
     ) {
         self.movieId = movieId
         self.movieTitle = movieTitle
         self.movieImageUrl = movieImageUrl
+        self.rating = rating
     }
     
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {

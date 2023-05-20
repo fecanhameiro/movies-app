@@ -42,6 +42,8 @@
 		344FE0D52A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FE0D42A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift */; };
 		344FE0D72A18205A0011E40C /* MAMoviePlotCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FE0D62A18205A0011E40C /* MAMoviePlotCollectionViewCellViewModel.swift */; };
 		34DB84F82A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DB84F72A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift */; };
+		34DB84FA2A18DB9000D5E641 /* MAGetMostPopularMoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DB84F92A18DB9000D5E641 /* MAGetMostPopularMoviesResponse.swift */; };
+		34DB84FD2A18E0E200D5E641 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 34DB84FC2A18E0E200D5E641 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,7 @@
 		344FE0D42A181F4A0011E40C /* MAMoviePlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMoviePlotCollectionViewCell.swift; sourceTree = "<group>"; };
 		344FE0D62A18205A0011E40C /* MAMoviePlotCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMoviePlotCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		34DB84F72A18C32D00D5E641 /* RMHeaderSearchCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMHeaderSearchCollectionReusableView.swift; sourceTree = "<group>"; };
+		34DB84F92A18DB9000D5E641 /* MAGetMostPopularMoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGetMostPopularMoviesResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34DB84FD2A18E0E200D5E641 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +214,7 @@
 			children = (
 				340550272A168E0A00CED8F7 /* MAGetMoviesResponse.swift */,
 				344FE0B82A17BAA20011E40C /* MAGetRatingResponse.swift */,
+				34DB84F92A18DB9000D5E641 /* MAGetMostPopularMoviesResponse.swift */,
 			);
 			path = APIResponseTypes;
 			sourceTree = "<group>";
@@ -290,6 +295,9 @@
 			dependencies = (
 			);
 			name = MoviesAppUIKit;
+			packageProductDependencies = (
+				34DB84FC2A18E0E200D5E641 /* SDWebImage */,
+			);
 			productName = MoviesAppUIKit;
 			productReference = 34054FF92A16784400CED8F7 /* MoviesAppUIKit.app */;
 			productType = "com.apple.product-type.application";
@@ -318,6 +326,9 @@
 				Base,
 			);
 			mainGroup = 34054FF02A16784400CED8F7;
+			packageReferences = (
+				34DB84FB2A18E0E200D5E641 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 34054FFA2A16784400CED8F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -373,6 +384,7 @@
 				344FE0C22A17CE770011E40C /* MAMovieCastCollectionViewCellViewModel.swift in Sources */,
 				344FE0C02A17CE070011E40C /* MAMovieInfoCollectionViewCellViewModel.swift in Sources */,
 				344FE0C42A17CEBE0011E40C /* MAFullCast.swift in Sources */,
+				34DB84FA2A18DB9000D5E641 /* MAGetMostPopularMoviesResponse.swift in Sources */,
 				3405501C2A168AD100CED8F7 /* MAService.swift in Sources */,
 				344FE0BB2A17CD330011E40C /* MAMovieDetailViewViewModel.swift in Sources */,
 				3405502B2A16910400CED8F7 /* MAMovieViewController.swift in Sources */,
@@ -582,6 +594,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		34DB84FB2A18E0E200D5E641 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		34DB84FC2A18E0E200D5E641 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34DB84FB2A18E0E200D5E641 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 34054FF12A16784400CED8F7 /* Project object */;
 }

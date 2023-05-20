@@ -28,6 +28,17 @@ final class MAMovieListView: UIView {
         return spinner
     }()
     
+    private let emptyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Nenhum filme encontrado com a sua pesquisa :("
+        label.textColor = .gray
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.alpha = 0
+        return label
+    }()
+
+    
     private func createCollectionView() -> UICollectionView {
         let layout = createLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -49,10 +60,11 @@ final class MAMovieListView: UIView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         collectionView = createCollectionView()
-        addSubviews(collectionView, spinner)
+        addSubviews(collectionView, spinner, emptyLabel)
         addConstraints()
         viewModel.delegate = self
         setUpCollectionView()
+        viewModel.fetchMovies()
     }
     
     required init?(coder: NSCoder) {
@@ -70,6 +82,9 @@ final class MAMovieListView: UIView {
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            emptyLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emptyLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }
     
@@ -114,6 +129,8 @@ extension MAMovieListView: MAMovieListViewViewModelDelegate {
     
     func didStartLoadingMovies() {
         spinner.startAnimating()
+        shouldShowEmptyMessage(false)
+        collectionView.reloadData() 
     }
     
     func didLoadedMovies() {
@@ -121,5 +138,11 @@ extension MAMovieListView: MAMovieListViewViewModelDelegate {
         collectionView.reloadData() 
     }
     
+    func shouldShowEmptyMessage(_ show: Bool) {
+        
+        UIView.animate(withDuration: 0.1) {
+            self.emptyLabel.alpha = show ? 1 : 0
+        }
+    }
 }
 

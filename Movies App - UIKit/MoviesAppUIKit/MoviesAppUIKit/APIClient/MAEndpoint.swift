@@ -11,6 +11,8 @@ import Foundation
 @frozen enum MAEndpoint: String, CaseIterable, Hashable {
     /// Endpoint to get movies list
     case movieSearch = "SearchMovie"
+    /// Endpoint to get movies list
+    case mostPopularMovies = "MostPopularMovies"
     /// Endpoint to get movie rating
     case movieRating = "Ratings"
     /// Endpoint to get movie detail

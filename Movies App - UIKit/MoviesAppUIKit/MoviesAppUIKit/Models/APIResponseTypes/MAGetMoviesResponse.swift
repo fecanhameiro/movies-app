@@ -10,6 +10,5 @@ import Foundation
 struct MAGetMoviesResponse: Codable {
     let searchType: String
     let results: [MAMovie]
-    let expression: String
     let errorMessage: String
 }

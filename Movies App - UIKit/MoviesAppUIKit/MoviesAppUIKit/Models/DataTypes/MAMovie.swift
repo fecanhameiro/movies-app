@@ -11,10 +11,9 @@ import Foundation
 struct MAMovie: Codable {
 
     let id: String
-    let resultType: String
     let image: String
     let title: String
-    let description: String
+    let imDbRating: String?
 
 }
 

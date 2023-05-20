@@ -135,7 +135,5 @@ final class MARequest {
 // MARK: - Request convenience
 
 extension MARequest {
-    
-    
-    static let listMoviesRequests = MARequest(endpoint: .movieSearch, pathComponents:  ["evildead"])
+    static let listMostPopularMoviesRequests = MARequest(endpoint: .mostPopularMovies)
 }

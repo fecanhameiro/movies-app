@@ -11,6 +11,7 @@ protocol MAMovieListViewViewModelDelegate: AnyObject {
     func didLoadedMovies()
     func didSelectMovie(_ movie: MAMovie)
     func didStartLoadingMovies()
+    func shouldShowEmptyMessage(_ show: Bool)
 }
 
 /// View Model to handle movie  list view logic
@@ -24,7 +25,8 @@ final class MAMovieListViewViewModel: NSObject {
                 let viewModel = MAMovieCollectionViewCellViewModel(
                     movieId: movie.id,
                     movieTitle: movie.title,
-                    movieImageUrl: URL(string: movie.image)
+                    movieImageUrl: URL(string: movie.image),
+                    rating: MARating(imDbId: nil, imDb: movie.imDbRating)
                 )
                 if !cellViewModels.contains(viewModel) {
                     cellViewModels.append(viewModel)
@@ -35,11 +37,35 @@ final class MAMovieListViewViewModel: NSObject {
     
     private var cellViewModels: [MAMovieCollectionViewCellViewModel] = []
     
-    
     /// Fetch initial set of movies
-    public func fetchMovies(searchText: String) {
+    public func fetchMovies() {
         
+        self.cellViewModels.removeAll()
         delegate?.didStartLoadingMovies()
+        
+        MAService.shared.execute(
+            .listMostPopularMoviesRequests,
+            expecting: MAGetMostPopularMoviesResponse.self
+        ) { [weak self] result in
+            switch result {
+                case .success(let responseModel):
+                    self?.movies = responseModel.items
+                    DispatchQueue.main.async {
+                        self?.delegate?.didLoadedMovies()
+                        self?.delegate?.shouldShowEmptyMessage(self?.movies.isEmpty ?? true)
+                    }
+                case .failure(let error):
+                    print(String(describing: error))
+            }
+        }
+    }
+    
+    /// Fetch search movies
+    public func fetchSearchMovies(searchText: String) {
+        
+        self.cellViewModels.removeAll()
+        delegate?.didStartLoadingMovies()
+      
         
         guard let encodedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             print("Error encoding searchText")
@@ -57,6 +83,7 @@ final class MAMovieListViewViewModel: NSObject {
                     self?.movies = responseModel.results
                     DispatchQueue.main.async {
                         self?.delegate?.didLoadedMovies()
+                        self?.delegate?.shouldShowEmptyMessage(self?.movies.isEmpty ?? true)
                     }
                 case .failure(let error):
                     print(String(describing: error))
@@ -74,7 +101,7 @@ extension MAMovieListViewViewModel: UICollectionViewDataSource, UICollectionView
         searchBar.resignFirstResponder()
         
         if let searchText = searchBar.text {
-            fetchMovies(searchText: searchText)
+            fetchSearchMovies(searchText: searchText)
         }
     }
     
