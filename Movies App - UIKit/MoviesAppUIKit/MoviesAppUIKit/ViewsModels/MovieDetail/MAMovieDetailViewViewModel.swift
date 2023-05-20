@@ -139,7 +139,7 @@ final class MAMovieDetailViewViewModel {
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize:  NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .absolute(90)
+                heightDimension: .absolute(100)
             ),
             subitems: UIDevice.isiPhone ? [item, item] : [item, item, item, item]
         )

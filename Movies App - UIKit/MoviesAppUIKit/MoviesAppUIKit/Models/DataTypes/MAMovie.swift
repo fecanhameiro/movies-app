@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct MAMovie: Codable {
 
     let id: String

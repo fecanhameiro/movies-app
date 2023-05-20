@@ -23,6 +23,8 @@ final class MAMovieDetailView: UIView {
         return spinner
     }()
     
+
+    
     // MARK: - Init
     
     init(frame: CGRect, viewModel: MAMovieDetailViewViewModel) {
@@ -102,7 +104,6 @@ extension MAMovieDetailView: MAMovieDetailViewViewModelDelegate {
         self.collectionView?.reloadData()
         UIView.animate(withDuration: 0.4) {
             self.collectionView?.alpha = 1
-            
         }
     }
     

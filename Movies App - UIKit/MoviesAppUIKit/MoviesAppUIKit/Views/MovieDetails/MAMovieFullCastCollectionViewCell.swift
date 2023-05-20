@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
     static let cellIdentifer = "MAMovieFullCastCollectionViewCell"
+    private var maskLayer: CAShapeLayer?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -29,15 +31,25 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.sd_imageTransition = .fade
         return imageView
     }()
+    
+    private let spinnerImage: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.hidesWhenStopped = true
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
+    
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .tertiarySystemBackground
         setUpLayer()
-        contentView.addSubviews(titleLabel, nameLabel, imageView)
+        contentView.addSubviews(titleLabel, nameLabel, imageView, spinnerImage)
         setUpConstraints()
     }
     
@@ -46,8 +58,24 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUpLayer() {
-        contentView.layer.cornerRadius = 8
         contentView.layer.borderWidth = 2
+        
+        if let maskLayer = self.maskLayer {
+            maskLayer.frame = bounds
+            maskLayer.path = UIBezierPath(roundedRect: bounds,
+                                          byRoundingCorners: [.allCorners],
+                                          cornerRadii: CGSize(width: 8.0, height: 8.0)).cgPath
+        } else {
+            let maskLayer = CAShapeLayer()
+            maskLayer.frame = bounds
+            maskLayer.path = UIBezierPath(roundedRect: bounds,
+                                          byRoundingCorners: [.allCorners],
+                                          cornerRadii: CGSize(width: 8.0, height: 8.0)).cgPath
+            contentView.layer.mask = maskLayer
+            self.maskLayer = maskLayer
+        }
+        
+    
     }
     
     private func setUpConstraints() {
@@ -66,6 +94,9 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
             nameLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 10),
             nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
             nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            spinnerImage.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            spinnerImage.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
         ])
 
     }
@@ -79,21 +110,21 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
     
     public func configure(with viewModel: MAMovieCastCollectionViewCellViewModel) {
         
-        self.titleLabel.text = viewModel.title
-        self.nameLabel.text = viewModel.name
+        DispatchQueue.main.async {
+            self.titleLabel.text = viewModel.title
+            self.nameLabel.text = viewModel.name
+        }
         
-        viewModel.fetchImage { [weak self] result in
-            switch result {
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        let image = UIImage(data: data)
-                        self?.imageView.image = image
-                    }
-                case .failure(let error):
-                    print(String(describing: error))
-                    break
+        if let imageUrl = viewModel.castImageUrl {
+            spinnerImage.startAnimating()
+            
+            imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: []) { [weak self] (_, _, _, _) in
+                DispatchQueue.main.async {
+                    self?.spinnerImage.stopAnimating()
+                    self?.spinnerImage.removeFromSuperview()
+                }
             }
         }
-      
+        
     }
 }

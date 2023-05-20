@@ -40,7 +40,7 @@ final class MAMovieCollectionViewCellViewModel: Hashable, Equatable {
 
         let request = MARequest(endpoint: .movieRating, pathComponents: [self.movieId])
                 
-        MAService.shared.execute(request, expecting: MARating.self) { [weak self] result in
+        MAService.shared.execute(request, expecting: MARating.self) { result in
             switch result {
                 case .success(let model):
                     completion(.success(model))

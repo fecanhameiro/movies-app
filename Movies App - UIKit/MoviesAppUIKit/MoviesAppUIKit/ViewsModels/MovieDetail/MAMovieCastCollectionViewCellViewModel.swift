@@ -24,13 +24,4 @@ final class MAMovieCastCollectionViewCellViewModel {
         self.castImageUrl = castImageUrl
     }
     
-    public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
-        
-        guard let url = castImageUrl else {
-            completion(.failure(URLError(.badURL)))
-            return
-        }
-        MAImageLoader.shared.downloadImage(url, completion: completion)
-    }
-
 }

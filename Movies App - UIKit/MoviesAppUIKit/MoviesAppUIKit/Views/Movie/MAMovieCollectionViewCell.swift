@@ -53,7 +53,7 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
         contentView.addSubviews(imageView, titleLabel, ratingLabel, spinnerImage)
         addConstraints()
         
-       
+        
     }
     
     required init?(coder: NSCoder) {
@@ -126,44 +126,41 @@ final class MAMovieCollectionViewCell: UICollectionViewCell {
     }
     
     public func configure(with viewModel: MAMovieCollectionViewCellViewModel) {
-        titleLabel.text = viewModel.movieTitle
-        
-        if let imageUrl = viewModel.movieImageUrl
-        {
+        if let imageUrl = viewModel.movieImageUrl {
             spinnerImage.startAnimating()
-            imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: [], completed: { (_, _, _, _) in
-                self.spinnerImage.stopAnimating()
-                self.spinnerImage.removeFromSuperview()
-            })
+            imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: []) { [weak self] (_, _, _, _) in
+                DispatchQueue.main.async {
+                    self?.spinnerImage.stopAnimating()
+                    self?.spinnerImage.removeFromSuperview()
+                }
+            }
         }
-
-        if let rating = viewModel.rating?.imDb{
-            self.ratingLabel.text = "IMDB: \(rating != "" ? rating : "-")"
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.titleLabel.text = viewModel.movieTitle
+            if let rating = viewModel.rating?.imDb {
+                self?.ratingLabel.text = "IMDB: \(rating != "" ? rating : "-")"
+            }
         }
-        else
-        {
-            
-            viewModel.fetchRating{ [weak self] result in
+        
+        if viewModel.rating?.imDb == nil || viewModel.rating?.imDb == "" {
+            viewModel.fetchRating { [weak self] result in
                 switch result {
                     case .success(let data):
-                        
                         DispatchQueue.main.async {
                             let ratingText = "IMDB:"
-                            
-                            if let imdb = data.imDb, data.imDb != ""
-                            {
+                            if let imdb = data.imDb, data.imDb != "" {
                                 self?.ratingLabel.text = "\(ratingText) \(imdb)"
                             }
-                            else
-                            {
+                            else {
                                 self?.ratingLabel.text = "\(ratingText) -"
                             }
                         }
                     case .failure(let error):
                         print(String(describing: error))
-                        break
                 }
             }
         }
     }
+
 }

@@ -12,8 +12,9 @@ final class MAMovieInfoCollectionViewCell: UICollectionViewCell {
     
     private let valueLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 3
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         return label
     }()
     
@@ -21,7 +22,7 @@ final class MAMovieInfoCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 13, weight: .light)
+        label.font = .systemFont(ofSize: 12, weight: .light)
         return label
     }()
     
@@ -53,10 +54,9 @@ final class MAMovieInfoCollectionViewCell: UICollectionViewCell {
             
             iconImageView.heightAnchor.constraint(equalToConstant: 18),
             iconImageView.widthAnchor.constraint(equalToConstant: 18),
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             iconImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 32),
-            iconImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+
             valueLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 10),
             valueLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
             valueLabel.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),

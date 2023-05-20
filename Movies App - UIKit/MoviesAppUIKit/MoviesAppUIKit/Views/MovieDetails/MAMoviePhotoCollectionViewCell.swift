@@ -19,9 +19,18 @@ final class MAMoviePhotoCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    private let spinnerImage: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.hidesWhenStopped = true
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
+        contentView.addSubview(spinnerImage)
         setUpConstraints()
     }
     
@@ -35,6 +44,9 @@ final class MAMoviePhotoCollectionViewCell: UICollectionViewCell {
             imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            spinnerImage.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            spinnerImage.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
         ])
     }
     
@@ -44,10 +56,14 @@ final class MAMoviePhotoCollectionViewCell: UICollectionViewCell {
     }
     
     public func configure(with viewModel: MAMoviePhotoCollectionViewCellViewModel) {
+        
+        self.spinnerImage.startAnimating()
+        
         viewModel.fetchImage { [weak self] result in
             switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
+                        self?.spinnerImage.stopAnimating()
                         self?.imageView.image = UIImage(data: data)
                     }
                 case .failure:

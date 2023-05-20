@@ -95,13 +95,13 @@ final class MAMovieListView: UIView {
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
         
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(300)) // aqui, você define a altura como 150
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(300))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .absolute(300))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2) // 2 itens por grupo
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         group.interItemSpacing = .fixed(12)
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),

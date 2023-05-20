@@ -14,9 +14,10 @@ final class MAMoviePlotCollectionViewCell: UICollectionViewCell {
     private let textView: UITextView = {
         let textView = UITextView()
         textView.textColor = .label
-        textView.font = .systemFont(ofSize: 16, weight: .medium)
+        textView.font = .systemFont(ofSize: 16, weight: .light)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = true;
+        textView.isEditable = false
         return textView
     }()
     
@@ -45,6 +46,8 @@ final class MAMoviePlotCollectionViewCell: UICollectionViewCell {
     }
     
     public func configure(with viewModel: MAMoviePlotCollectionViewCellViewModel) {
-        textView.text = viewModel.text;
+        DispatchQueue.main.async {
+            self.textView.text = viewModel.text;
+        }
     }
 }
