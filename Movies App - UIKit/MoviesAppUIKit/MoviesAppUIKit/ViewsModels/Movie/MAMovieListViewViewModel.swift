@@ -20,6 +20,7 @@ protocol MAMovieListViewViewModelDelegate: AnyObject {
 final class MAMovieListViewViewModel: NSObject {
     
     public weak var delegate: MAMovieListViewViewModelDelegate?
+    weak var searchBar: UISearchBar?
         
     private var movies: [MAMovie] = [] {
         didSet {
@@ -111,6 +112,10 @@ extension MAMovieListViewViewModel: UICollectionViewDataSource, UICollectionView
         }
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.searchBar?.resignFirstResponder()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellViewModels.count
     }
@@ -137,6 +142,7 @@ extension MAMovieListViewViewModel: UICollectionViewDataSource, UICollectionView
             fatalError("Unsupported")
         }
         header.searchBar.delegate = self
+        self.searchBar = header.searchBar
         return header
     }
     

@@ -32,6 +32,7 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.sd_imageTransition = .fade
+        imageView.image = UIImage(named: "movie-place-holder")
         return imageView
     }()
     
@@ -75,7 +76,7 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
             self.maskLayer = maskLayer
         }
         
-    
+        
     }
     
     private func setUpConstraints() {
@@ -98,7 +99,7 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
             spinnerImage.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
             spinnerImage.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
         ])
-
+        
     }
     
     override func prepareForReuse() {
@@ -124,6 +125,9 @@ class MAMovieFullCastCollectionViewCell: UICollectionViewCell {
                     self?.spinnerImage.removeFromSuperview()
                 }
             }
+        }
+        else{
+            imageView.image = UIImage(named: "movie-place-holder")
         }
         
     }

@@ -23,6 +23,7 @@ final class MAMovieInfoCollectionViewCellViewModel {
         formatter.dateStyle = .short
         formatter.timeStyle = .none
         formatter.timeZone = .current
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate:  "yyyy-MM-dd", options: 0, locale: Locale.current)
         return formatter
     }()
     
