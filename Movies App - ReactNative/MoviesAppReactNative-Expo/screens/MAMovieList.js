@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, FlatList, ActivityIndicator, Text } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, FlatList, ActivityIndicator  } from 'react-native';
 import { StyleSheet } from 'react-native';
 import MAAPIService from '../api/MAAPIService';
-import MASearchBar from '../components/Core/MASearchBar';
+import MAMovieSearchBar from '../components/Core/MAMovieSearchBar';
 import MAMovieCard from '../components/Core/MAMovieCard';
 import { useNavigation } from '@react-navigation/native';
 
 const MAMovieList = () => {
-    const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const navigation = useNavigation();
+    const [searchText, setSearchText] = useState('');
+
 
     const fetchMostPopularMovies = async () => {
         setIsLoading(true);
@@ -25,14 +26,39 @@ const MAMovieList = () => {
         }
     };
 
+    const fetchMoviesBySearch = async (query) => {
+        setIsLoading(true);
+        try {
+          const data = await MAAPIService.getMoviesBySearch(query);
+          console.log(data)
+          setMovies(data?.results);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
     useEffect(() => {
         fetchMostPopularMovies();
     }, []);
-
-    return (
-        <View style={styles.container} contentInsetAdjustmentBehavior='automatic'>
+    
+    const renderHeader = () => {
+        return (
+            <MAMovieSearchBar 
+                onSubmitEditing={fetchMoviesBySearch} 
+                setSearchText={setSearchText}
+                searchText={searchText}
+            />
+        );
+    };
+    
+      return (
+        <View style={styles.container}>
             {isLoading ? (
-                <ActivityIndicator />
+                <View style={styles.loadingContainer}>
+                    <ActivityIndicator size="large" color="gray" />
+                </View>
             ) : (
                 <FlatList
                     contentInsetAdjustmentBehavior='automatic'
@@ -43,10 +69,12 @@ const MAMovieList = () => {
                     renderItem={({ item }) => (
                         <MAMovieCard movie={item} navigation={navigation} />
                     )}
+                    ListHeaderComponent={renderHeader}
                 />
             )}
         </View>
     );
+    
 };
 
 const styles = StyleSheet.create({
@@ -55,9 +83,15 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         paddingHorizontal: 0
     },
+    loadingContainer: {
+        flex: 1,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+    },
     list: {
         flex: 1
     }
 });
+
 
 export default MAMovieList;

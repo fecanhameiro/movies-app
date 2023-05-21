@@ -12,9 +12,8 @@ class MAAPIRequest {
     return this.api.get(`/MostPopularMovies/${this.apiKey}`); 
   }
 
-  getSearchMovies(query) {
-    // replace with the correct endpoint
-    return this.api.get(`/SearchMovie`); 
+  getMoviesBySearch(query) {
+    return this.api.get(`/SearchMovie/${this.apiKey}/${encodeURIComponent(query)}`); 
   }
 
   getMovieDetails(id) {    
@@ -22,8 +21,7 @@ class MAAPIRequest {
   }
 
   getMovieRating(id) {
-    // replace with the correct endpoint
-    return this.api.get(`/Ratings/${id}`); 
+    return this.api.get(`/Ratings/${this.apiKey}/${id}`); 
   }
 }
 

@@ -1,9 +1,9 @@
 import MAAPIRequest from './MAAPIRequest';
 
 class MAAPIService {
-  async getSearchMovies(query) {
+  async getMoviesBySearch(query) {
     try {
-      const response = await MAAPIRequest.getSearchMovies(query);
+      const response = await MAAPIRequest.getMoviesBySearch(query);
       return response.data;
     } catch (error) {
       throw error;
@@ -22,6 +22,15 @@ class MAAPIService {
   async getMovieDetails(id) {
     try {
       const response = await MAAPIRequest.getMovieDetails(id);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getMovieRating(id) {
+    try {
+      const response = await MAAPIRequest.getMovieRating(id);
       return response.data;
     } catch (error) {
       throw error;

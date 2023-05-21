@@ -5,15 +5,17 @@ import MAMovieDetailsPlotCell from './MAMovieDetailsPlotCell';
 import MAMovieDetailsFullCastCell from './MAMovieDetailsFullCastCell';
 import MAAPIService from '../../api/MAAPIService';
 
-const MAMovieDetails = ({ route, navigation}) => {
+const MAMovieDetails = ({ route, navigation }) => {
     const { movie } = route.params;
     const [movieDetails, setMovieDetails] = useState(null);
     const [fullCast, setFullCast] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [releaseFormattedDate, setReleaseFormattedDate] = useState(null);
+
 
     useEffect(() => {
 
-        navigation.setOptions({ title: movie.title});
+        navigation.setOptions({ title: movie.title });
 
         const fetchMovieDetails = async () => {
             try {
@@ -21,12 +23,15 @@ const MAMovieDetails = ({ route, navigation}) => {
 
                 setMovieDetails(details);
 
+                let date = new Date(details.releaseDate);
+                setReleaseFormattedDate(date.toLocaleDateString());
+
                 const directors = details.fullCast.directors.items.map(director => {
                     return {
                         id: director.id,
                         title: details.fullCast.directors.job,
                         name: director.name,
-                        image: null 
+                        image: null
                     }
                 });
 
@@ -53,7 +58,9 @@ const MAMovieDetails = ({ route, navigation}) => {
     }, [movie.id, movie.title, navigation]);
 
     if (isLoading) {
-        return <ActivityIndicator />;
+        return <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color="gray" />
+        </View>;
     }
 
     return (
@@ -61,8 +68,8 @@ const MAMovieDetails = ({ route, navigation}) => {
             <Image resizeMode='contain' style={styles.image} source={{ uri: movie.image }} />
             <View style={styles.detailContainer}>
                 <MAMovieDetailsInfoCell icon={"tv"} title='Title:' value={movie.title} />
-                <MAMovieDetailsInfoCell icon={"calendar"} title='Release Date:' value={movieDetails.releaseDate} />
-                <MAMovieDetailsPlotCell  content={movieDetails.plot} />
+                <MAMovieDetailsInfoCell icon={"calendar"} title='Release Date:' value={releaseFormattedDate} />
+                <MAMovieDetailsPlotCell content={movieDetails.plot} />
                 <MAMovieDetailsFullCastCell cast={fullCast} />
             </View>
         </View>
@@ -74,13 +81,18 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
     },
+    loadingContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     image: {
         width: '100%',
         height: 320,
     },
     detailContainer: {
         justifyContent: 'space-between',
-        alignItems: 'center', 
+        alignItems: 'center',
     }
 });
 
