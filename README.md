@@ -17,6 +17,7 @@ Movies App - React Native - Expo is a React Native application built with Expo C
 
 Search Bar: The application provides a search bar where users can input keywords to search for movies.
 Search Bar
+
 <img
   src="assets/react-native-expo/rn-movie-search_iphone13blue_portrait.png"
   alt="Alt text"
@@ -25,6 +26,7 @@ Search Bar
 
 Fetching Movies: Upon a search query, the application fetches a list of matching movies from the IMDb API.
 Home
+
 <img
   src="assets/react-native-expo/rn-home_iphone13blue_portrait.png"
   alt="Alt text"
@@ -34,6 +36,7 @@ Home
 Displaying Search Results: The search results are displayed in a collection view with each cell showcasing the movie's title, poster image, and rating.
 Detailed Movie Information: Tapping on a collection view cell opens a detailed view that displays more information about the selected movie, including the plot, release date, and cast members.
 Details
+
 <img
   src="assets/react-native-expo/rn-movie-details_iphone13blue_portrait.png"
   alt="Alt text"
