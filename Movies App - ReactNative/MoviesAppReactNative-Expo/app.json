@@ -1,10 +1,16 @@
 {
   "expo": {
-    "name": "MoviesAppReactNative-Expo",
-    "slug": "MoviesAppReactNative-Expo",
+    "name": "Movies App React Native Expo",
+    "slug": "movie-app-react-native-expo",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ff8b1de0-f009-4279-b8a8-df640ee22809"
+      }
+    },
+    "owner": "fedurden"
   }
 }
