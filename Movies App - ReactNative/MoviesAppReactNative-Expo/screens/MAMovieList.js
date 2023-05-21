@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { View, FlatList, ActivityIndicator  } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, FlatList, ActivityIndicator, Alert } from 'react-native';
 import { StyleSheet } from 'react-native';
 import MAAPIService from '../api/MAAPIService';
 import MAMovieSearchBar from '../components/Core/MAMovieSearchBar';
@@ -10,9 +10,17 @@ const MAMovieList = () => {
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const navigation = useNavigation();
-    const [searchText, setSearchText] = useState('');
 
-
+    const showAlert = (title, error) => {
+        Alert.alert(
+            title,
+            error,
+            [
+                { text: "OK", onPress: () => console.log("OK Pressed") }
+            ]
+        );
+    }
+    
     const fetchMostPopularMovies = async () => {
         setIsLoading(true);
         try {
@@ -21,6 +29,7 @@ const MAMovieList = () => {
             setMovies(data?.items);
         } catch (error) {
             console.error(error);
+            showAlert("Error", "An unexpected error occurred while fetching the most popular movies.");
         } finally {
             setIsLoading(false);
         }
@@ -33,6 +42,7 @@ const MAMovieList = () => {
           setMovies(data?.results);
         } catch (error) {
           console.error(error);
+          showAlert("Error", "An unexpected error occurred while fetching movies from your search"); 
         } finally {
           setIsLoading(false);
         }

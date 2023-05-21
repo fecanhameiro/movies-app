@@ -7,7 +7,7 @@ const MAMovieSearchBar = ({ onSubmitEditing }) => {
 
   return (
     <SearchBar
-      placeholder="Search for movies"
+      placeholder="Search for your favorite movie..."
       onChangeText={(text) => setSearchText(text)}
       value={searchText}
       onSubmitEditing={() => onSubmitEditing(searchText)}
@@ -22,7 +22,7 @@ const MAMovieSearchBar = ({ onSubmitEditing }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: '#EDEDED',
     borderBottomColor: 'transparent',
     borderTopColor: 'transparent'
   },

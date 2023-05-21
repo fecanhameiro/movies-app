@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: 320,
+        height: 300,
     },
     detailContainer: {
         justifyContent: 'space-between',
