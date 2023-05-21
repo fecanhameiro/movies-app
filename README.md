@@ -1,4 +1,4 @@
-# MoviesAppUIKit
+# Movies App - UIKit
 
 MoviesAppUIKit is an iOS application written in Swift that integrates with the IMDb API, allowing users to search for movies and view their details. This application was designed to fulfill a coding exercise that tests understanding and application of various iOS development concepts, such as API integration, UI design and user interaction handling.
 
@@ -9,10 +9,23 @@ MoviesAppUIKit is an iOS application written in Swift that integrates with the I
 <img
   src="assets/swift-uikit/swift-search_iphone13starlight_portrait.png"
   alt="Alt text"
-  title="Swift UI Kit - Home"
+  title="Swift UI Kit - Search Bar"
   style="display: inline-block; margin: 0 auto; height: 300px">
 
 2. **Fetching Movies**: Upon a search query, the application fetches a list of matching movies from the IMDb API.
+
+<img
+  src="assets/swift-uikit/swift-home_iphone13starlight_portrait.png"
+  alt="Alt text"
+  title="Swift UI Kit - Home Bar - Light"
+  style="display: inline-block; margin: 0 auto; height: 300px">
+ 
+ <img
+  src="assets/swift-uikit/swift-home-dark_iphone13starlight_portrait.png"
+  alt="Alt text"
+  title="Swift UI Kit - Home Bar - Dark"
+  style="display: inline-block; margin: 0 auto; height: 300px">
+ 
 
 3. **Displaying Search Results**: The search results are displayed in a collection view with each cell showcasing the movie's title, poster image, and rating.
 
