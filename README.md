@@ -5,11 +5,12 @@ MoviesAppUIKit is an iOS application written in Swift that integrates with the I
 ## Features
 
 1. **Search Bar**: The application provides a search bar where users can input keywords to search for movies.
+
 <img
   src="assets/swift-uikit/swift-search_iphone13starlight_portrait.png"
   alt="Alt text"
   title="Swift UI Kit - Home"
-  style="display: inline-block; margin: 0 auto; height: 100px">
+  style="display: inline-block; margin: 0 auto; height: 200px">
 
 2. **Fetching Movies**: Upon a search query, the application fetches a list of matching movies from the IMDb API.
 
