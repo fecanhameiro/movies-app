@@ -33,7 +33,6 @@ Home
   title="Swift UI Kit - Home - Light"
   style="display: inline-block; margin: 0 auto; height: 300px">
 
-Displaying Search Results: The search results are displayed in a collection view with each cell showcasing the movie's title, poster image, and rating.
 Detailed Movie Information: Tapping on a collection view cell opens a detailed view that displays more information about the selected movie, including the plot, release date, and cast members.
 Details
 
