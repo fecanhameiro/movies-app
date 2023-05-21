@@ -17,13 +17,13 @@ MoviesAppUIKit is an iOS application written in Swift that integrates with the I
 <img
   src="assets/swift-uikit/swift-home_iphone13starlight_portrait.png"
   alt="Alt text"
-  title="Swift UI Kit - Home Bar - Light"
+  title="Swift UI Kit - Home - Light"
   style="display: inline-block; margin: 0 auto; height: 300px">
  
  <img
   src="assets/swift-uikit/swift-home-dark_iphone13starlight_portrait.png"
   alt="Alt text"
-  title="Swift UI Kit - Home Bar - Dark"
+  title="Swift UI Kit - Home - Dark"
   style="display: inline-block; margin: 0 auto; height: 300px">
  
 
@@ -31,7 +31,25 @@ MoviesAppUIKit is an iOS application written in Swift that integrates with the I
 
 4. **Detailed Movie Information**: Tapping on a collection view cell opens a detailed view that displays more information about the selected movie, including the plot, release date, and cast members.
 
+<img
+  src="assets/swift-uikit/swift-details_iphone13starlight_portrait.png"
+  alt="Alt text"
+  title="Swift UI Kit - Details - Light"
+  style="display: inline-block; margin: 0 auto; height: 300px">
+ 
+ <img
+  src="assets/swift-uikit/swift-details-dark_iphone13starlight_portrait.png"
+  alt="Alt text"
+  title="Swift UI Kit - Details - Dark"
+  style="display: inline-block; margin: 0 auto; height: 300px">
+
 5. **Error Handling**: The application implements proper error handling mechanisms and displays appropriate error messages if the API request fails or no movies are found for the given search query.
+
+ <img
+  src="assets/swift-uikit/swift-error_iphone13starlight_portrait.png"
+  alt="Alt text"
+  title="Swift UI Kit - Error Handling"
+  style="display: inline-block; margin: 0 auto; height: 300px">
 
 ## Architecture
 
