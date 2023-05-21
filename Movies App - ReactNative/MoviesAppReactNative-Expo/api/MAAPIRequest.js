@@ -17,9 +17,8 @@ class MAAPIRequest {
     return this.api.get(`/SearchMovie`); 
   }
 
-  getMovieDetails(id) {
-    // replace with the correct endpoint
-    return this.api.get(`/Title/${id}`); 
+  getMovieDetails(id) {    
+    return this.api.get(`/Title/${this.apiKey}/${id}/FullCast`); 
   }
 
   getMovieRating(id) {

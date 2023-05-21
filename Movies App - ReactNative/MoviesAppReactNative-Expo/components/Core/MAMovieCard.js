@@ -10,6 +10,7 @@ const MAMovieCard = ({ movie, navigation }) => {
                     source={{ uri: movie.image }}
                 />
                 <Text style={styles.title} numberOfLines={2}>{movie.title}</Text>
+                <Text style={styles.rating}>IMDB: {movie.imDbRating}</Text>
             </View>
         </TouchableOpacity>
     )
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     card: {
         flex: 1,
         justifyContent: 'flex-start',
-        alignItems: 'center',
+        alignItems: 'left',
         padding: 0,
     },
     image: {
@@ -44,7 +45,16 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'left',
         fontSize: 14,
+        fontWeight: '600',
         paddingLeft: 8,
+    },
+    rating: {
+        textAlign: 'left',
+        fontSize: 12,
+        fontWeight: '400',
+        position: 'absolute',
+        paddingLeft: 8,
+        bottom: 12
     }
 });
 

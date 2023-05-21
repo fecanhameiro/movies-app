@@ -4,7 +4,7 @@ class MAAPIService {
   async getSearchMovies(query) {
     try {
       const response = await MAAPIRequest.getSearchMovies(query);
-      return response.data; // replace with the correct property path to the data
+      return response.data;
     } catch (error) {
       throw error;
     }
@@ -13,7 +13,7 @@ class MAAPIService {
   async getMostPopularMovies() {
     try {
       const response = await MAAPIRequest.getMostPopularMovies();
-      return response.data; // replace with the correct property path to the data
+      return response.data;
     } catch (error) {
       throw error;
     }
@@ -22,7 +22,7 @@ class MAAPIService {
   async getMovieDetails(id) {
     try {
       const response = await MAAPIRequest.getMovieDetails(id);
-      return response.data; // replace with the correct property path to the data
+      return response.data;
     } catch (error) {
       throw error;
     }

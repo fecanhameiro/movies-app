@@ -30,16 +30,12 @@ const MAMovieList = () => {
     }, []);
 
     return (
-        <View style={styles.container}>
-            <MASearchBar
-                query={query}
-                onQueryChange={setQuery}
-                onSearch={fetchMostPopularMovies}
-            />
+        <View style={styles.container} contentInsetAdjustmentBehavior='automatic'>
             {isLoading ? (
                 <ActivityIndicator />
             ) : (
                 <FlatList
+                    contentInsetAdjustmentBehavior='automatic'
                     style={styles.list}
                     data={movies}
                     numColumns={2}

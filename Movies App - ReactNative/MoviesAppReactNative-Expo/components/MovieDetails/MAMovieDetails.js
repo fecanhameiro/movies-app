@@ -1,17 +1,69 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Image, StyleSheet, ActivityIndicator } from 'react-native';
 import MAMovieDetailsInfoCell from './MAMovieDetailsInfoCell';
+import MAMovieDetailsPlotCell from './MAMovieDetailsPlotCell';
+import MAMovieDetailsFullCastCell from './MAMovieDetailsFullCastCell';
+import MAAPIService from '../../api/MAAPIService';
 
-
-const MAMovieDetails = ({ route }) => {
+const MAMovieDetails = ({ route, navigation}) => {
     const { movie } = route.params;
+    const [movieDetails, setMovieDetails] = useState(null);
+    const [fullCast, setFullCast] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+
+        navigation.setOptions({ title: movie.title});
+
+        const fetchMovieDetails = async () => {
+            try {
+                const details = await MAAPIService.getMovieDetails(movie.id);
+
+                setMovieDetails(details);
+
+                const directors = details.fullCast.directors.items.map(director => {
+                    return {
+                        id: director.id,
+                        title: details.fullCast.directors.job,
+                        name: director.name,
+                        image: null 
+                    }
+                });
+
+                const actors = details.fullCast.actors.map(actor => {
+                    return {
+                        id: actor.id,
+                        title: actor.name,
+                        name: actor.asCharacter,
+                        image: actor.image
+                    }
+                });
+
+                setFullCast(directors.concat(actors));
+
+
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchMovieDetails();
+    }, [movie.id, movie.title, navigation]);
+
+    if (isLoading) {
+        return <ActivityIndicator />;
+    }
 
     return (
         <View style={styles.container}>
             <Image resizeMode='contain' style={styles.image} source={{ uri: movie.image }} />
             <View style={styles.detailContainer}>
                 <MAMovieDetailsInfoCell icon={"tv"} title='Title:' value={movie.title} />
-                <MAMovieDetailsInfoCell icon={"calendar"} title='Release Date:' value={movie.release_date} />
+                <MAMovieDetailsInfoCell icon={"calendar"} title='Release Date:' value={movieDetails.releaseDate} />
+                <MAMovieDetailsPlotCell  content={movieDetails.plot} />
+                <MAMovieDetailsFullCastCell cast={fullCast} />
             </View>
         </View>
     );
@@ -24,12 +76,11 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: 300,
+        height: 320,
     },
     detailContainer: {
-        flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingHorizontal: 10,
+        alignItems: 'center', 
     }
 });
 
