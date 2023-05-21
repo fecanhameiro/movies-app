@@ -45,6 +45,7 @@ Details
 
 Error Handling: The application implements proper error handling mechanisms and displays appropriate error messages if the API request fails or no movies are found for the given search query.
 Error Handling
+
  <img
   src="assets/react-native-expo/rn-error_iphone13blue_portrait.png"
   alt="Alt text"
@@ -90,6 +91,7 @@ Movies App - UIKit is an iOS application written in Swift that integrates with t
 
 Search Bar: The application provides a search bar where users can input keywords to search for movies.
 Search Bar
+
 <img
   src="assets/swift-uikit/swift-search_iphone13starlight_portrait.png"
   alt="Alt text"
@@ -98,6 +100,7 @@ Search Bar
 
 Fetching Movies: Upon a search query, the application fetches a list of matching movies from the IMDb API.
 Home - Light
+
 <img
   src="assets/swift-uikit/swift-home_iphone13starlight_portrait.png"
   alt="Alt text"
@@ -105,6 +108,7 @@ Home - Light
   style="display: inline-block; margin: 0 auto; height: 300px">
 
 Home - Dark
+
  <img
   src="assets/swift-uikit/swift-home-dark_iphone13starlight_portrait.png"
   alt="Alt text"
@@ -114,6 +118,7 @@ Home - Dark
 Displaying Search Results: The search results are displayed in a collection view with each cell showcasing the movie's title, poster image, and rating.
 Detailed Movie Information: Tapping on a collection view cell opens a detailed view that displays more information about the selected movie, including the plot, release date, and cast members.
 Details - Light
+
 <img
   src="assets/swift-uikit/swift-details_iphone13starlight_portrait.png"
   alt="Alt text"
@@ -121,6 +126,7 @@ Details - Light
   style="display: inline-block; margin: 0 auto; height: 300px">
 
 Details - Dark
+
  <img
   src="assets/swift-uikit/swift-details-dark_iphone13starlight_portrait.png"
   alt="Alt text"
