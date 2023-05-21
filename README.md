@@ -6,8 +6,8 @@ The applications were created as coding exercises to demonstrate a broad underst
 
 # Contents
 
-Movies App - React Native - Expo
-Movies App - UIKit
+### Movies App - React Native - Expo
+### Movies App - UIKit
 
 ## Movies App - React Native - Expo
 
