@@ -30,7 +30,6 @@ const MAMovieList = () => {
         setIsLoading(true);
         try {
           const data = await MAAPIService.getMoviesBySearch(query);
-          console.log(data)
           setMovies(data?.results);
         } catch (error) {
           console.error(error);
@@ -45,11 +44,7 @@ const MAMovieList = () => {
     
     const renderHeader = () => {
         return (
-            <MAMovieSearchBar 
-                onSubmitEditing={fetchMoviesBySearch} 
-                setSearchText={setSearchText}
-                searchText={searchText}
-            />
+            <MAMovieSearchBar onSubmitEditing={fetchMoviesBySearch} />
         );
     };
     

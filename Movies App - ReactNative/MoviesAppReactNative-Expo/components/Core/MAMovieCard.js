@@ -1,16 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import MAAPIService from '../../api/MAAPIService';
 
 const MAMovieCard = ({ movie, navigation }) => {
+    const [rating, setRating] = useState(movie.imDbRating);
+
+    useEffect(() => {
+        const fetchRating = async () => {
+            if (!rating) {
+                console.log(rating)
+                try {
+                    const ratingData = await MAAPIService.getMovieRating(movie.id);
+                    setRating(ratingData?.imDb ?? "-");
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        };
+
+        fetchRating();
+    }, [movie.id]);
+
     return (
         <TouchableOpacity style={styles.touchable}  onPress={() => navigation.navigate('MAMovieDetails', { movie })}>
             <View style={styles.card}>
                 <Image
                     style={styles.image}
-                    source={{ uri: movie.image }}
+                    source={movie.image ? { uri: movie.image } : require('../../assets/icon.png')}
                 />
                 <Text style={styles.title} numberOfLines={2}>{movie.title}</Text>
-                <Text style={styles.rating}>IMDB: {movie.imDbRating}</Text>
+                <Text style={styles.rating}>IMDB: {rating}</Text>
             </View>
         </TouchableOpacity>
     )

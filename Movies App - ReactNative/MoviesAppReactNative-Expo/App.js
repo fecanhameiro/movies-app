@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import MAAppNavigator from './MAAppNavigator';
+import MAAppNavigator from './navigation/MAAppNavigator';
 
 export default function App() {
 

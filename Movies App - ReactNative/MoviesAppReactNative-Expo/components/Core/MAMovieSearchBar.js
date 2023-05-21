@@ -2,21 +2,20 @@ import { React, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
-const MAMovieSearchBar = ({ onSubmitEditing, setSearchText, searchText }) => {
-  const handleChangeText = (text) => {
-    setSearchText(text);
-  };
+const MAMovieSearchBar = ({ onSubmitEditing }) => {
+  const [searchText, setSearchText] = useState('');
 
   return (
     <SearchBar
       placeholder="Search for movies"
-      onChangeText={handleChangeText}
+      onChangeText={(text) => setSearchText(text)}
       value={searchText}
       onSubmitEditing={() => onSubmitEditing(searchText)}
       platform="ios"
       containerStyle={styles.container}
       inputStyle={styles.input}
       cancelButtonTitle="Cancel"
+      keyboardType='web-search'
     />
   );
 };

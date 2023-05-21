@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image, StyleSheet, ActivityIndicator } from 'react-native';
-import MAMovieDetailsInfoCell from './MAMovieDetailsInfoCell';
-import MAMovieDetailsPlotCell from './MAMovieDetailsPlotCell';
-import MAMovieDetailsFullCastCell from './MAMovieDetailsFullCastCell';
-import MAAPIService from '../../api/MAAPIService';
+import MAMovieDetailsInfoCell from '../components/MovieDetails/MAMovieDetailsInfoCell';
+import MAMovieDetailsPlotCell from '../components/MovieDetails/MAMovieDetailsPlotCell';
+import MAMovieDetailsFullCastCell from '../components/MovieDetails/MAMovieDetailsFullCastCell';
+import MAAPIService from '../api/MAAPIService';
 
 const MAMovieDetails = ({ route, navigation }) => {
     const { movie } = route.params;
