@@ -23,7 +23,7 @@ final class MATabBarController: UITabBarController {
         let nav1 = UINavigationController(rootViewController: moviesVC)
         
         nav1.tabBarItem = UITabBarItem(title: "Movies",
-                                       image: UIImage(systemName: "film.stack"),
+                                       image: UIImage(systemName: "film"),
                                        tag: 1)
         
         for nav in [nav1] {
