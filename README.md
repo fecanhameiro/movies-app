@@ -6,12 +6,9 @@ The applications were created as coding exercises to demonstrate a broad underst
 
 # Contents
 
-### Movies App - React Native - Expo
-### Movies App - UIKit
-
 ## Movies App - React Native - Expo
 
-Movies App - React Native - Expo is a React Native application built with Expo CLI, written in JavaScript. The application integrates with the IMDb API, allowing users to search for movies and view their details. This application was designed to fulfill a coding exercise that tests understanding and application of various mobile development concepts, such as API integration, UI design and user interaction handling.
+Movies App - React Native - Expo is a React Native application built with Expo CLI, written in JavaScript. The application integrates with the IMDb API, allowing users to search for movies and view their details.
 
 ## Features
 
@@ -86,7 +83,7 @@ Expo CLI 3.0+
 
 # Movies App - UIKit
 
-Movies App - UIKit is an iOS application written in Swift that integrates with the IMDb API, allowing users to search for movies and view their details. This application was designed to fulfill a coding exercise that tests understanding and application of various iOS development concepts, such as API integration, UI design and user interaction handling.
+Movies App - UIKit is an iOS application written in Swift that integrates with the IMDb API, allowing users to search for movies and view their details.
 
 ## Features
 
