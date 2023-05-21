@@ -1,19 +1,19 @@
-Consolidated Movies App - Swift UIKit & React Native
+# Consolidated Movies App - Swift UIKit & React Native
 
 This repository contains two distinct applications developed for iOS with the same functionality, one using Swift and UIKit, and the other using React Native with Expo CLI. Both applications are designed to integrate with the IMDb API, enabling users to search for movies and view detailed information about them.
 
 The applications were created as coding exercises to demonstrate a broad understanding of various concepts in iOS development and React Native, such as API integration, UI design, user interaction handling, and state management.
 
-Contents
+# Contents
 
 Movies App - React Native - Expo
 Movies App - UIKit
 
-Movies App - React Native - Expo
+## Movies App - React Native - Expo
 
 Movies App - React Native - Expo is a React Native application built with Expo CLI, written in JavaScript. The application integrates with the IMDb API, allowing users to search for movies and view their details. This application was designed to fulfill a coding exercise that tests understanding and application of various mobile development concepts, such as API integration, UI design and user interaction handling.
 
-Features
+## Features
 
 Search Bar: The application provides a search bar where users can input keywords to search for movies.
 Search Bar
@@ -48,7 +48,7 @@ Error Handling
   title="Swift UI Kit - Error Handling"
   style="display: inline-block; margin: 0 auto; height: 300px">
 
-Architecture
+## Architecture
 
 The application follows a modular structure based on the component philosophy of React. This structure promotes reusability and separation of concerns. Each component has its own functionality and rendering logic, encapsulated within the component itself.
 
@@ -58,7 +58,7 @@ The application follows a modular structure based on the component philosophy of
   title="Swift UI Kit - Expo Settings"
   style="display: inline-block; margin: 0 auto; height: 300px">
 
-Components
+## Components
 Key components and their roles in the application include:
 
 MovieListScreen: This is a screen component that displays the list of movies. It is also responsible for managing the loading state while fetching movies.
@@ -77,11 +77,13 @@ Navigate to the project directory in your terminal.
 Install the dependencies by running npm install or yarn install.
 Start the Expo server by running npm start or yarn start.
 Open the app in either an iOS simulator, Android emulator, or your own mobile device using the Expo Go app.
-Movies App - UIKit
+
+
+# Movies App - UIKit
 
 Movies App - UIKit is an iOS application written in Swift that integrates with the IMDb API, allowing users to search for movies and view their details. This application was designed to fulfill a coding exercise that tests understanding and application of various iOS development concepts, such as API integration, UI design and user interaction handling.
 
-Features
+## Features
 
 Search Bar: The application provides a search bar where users can input keywords to search for movies.
 Search Bar
@@ -130,15 +132,15 @@ Error Handling
   title="Swift UI Kit - Error Handling"
   style="display: inline-block; margin: 0 auto; height: 300px">
 
-Architecture
+## Architecture
 
 The application follows the Model-View-ViewModel (MVVM) architectural pattern. The ViewModel classes handle the business logic, network requests and data manipulation, while the View classes are responsible for displaying the data on the screen.
 
-Accessibility
+## Accessibility
 
 The application provides image accessibility by adding accessibility labels to images. This ensures that the content is accessible to all users, including those with visual impairments who may be using VoiceOver.
 
-Components
+## Components
 
 Here are some key classes and their roles in the application:
 
