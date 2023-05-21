@@ -71,7 +71,7 @@ Here are some key classes and their roles in the application:
   
 ## Requirements
 
-- iOS 14.0+
+- iOS 15.0+
 - Xcode 12.0+
 - Swift 5.0+
 
